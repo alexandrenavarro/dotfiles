@@ -745,6 +745,184 @@
     <!-- show the manage desktops section in the client-list-(combined-)menu -->
   </menu>
   <applications>
+    <!-- match all windows, and remove their decorations -->
+    <application class="*">
+      <decor>no</decor>
+    </application>
+
+
+    <!-- application on the left -->
+    <application class="Gnome-terminal">
+      <decor>no</decor>
+      <position force="no">
+        <x>0</x>
+        <y>0</y>
+      </position>
+      <size>
+        <width>50%</width>
+        <height>100%</height>
+      </size>
+    </application>
+
+    <application class="Thunar">
+      <decor>no</decor>
+      <position force="no">
+        <x>0</x>
+        <y>0</y>
+      </position>
+      <size>
+        <width>50%</width>
+        <height>100%</height>
+      </size>
+    </application>
+
+   <application class="Org.gnome.Nautilus">
+      <decor>no</decor>
+      <position force="no">
+        <x>0</x>
+        <y>0</y>
+      </position>
+      <size>
+        <width>50%</width>
+        <height>100%</height>
+      </size>
+    </application>
+
+   <application class="Gnome-system-monitor">
+      <decor>no</decor>
+      <position force="no">
+        <x>0</x>
+        <y>0</y>
+      </position>
+      <size>
+        <width>50%</width>
+        <height>100%</height>
+      </size>
+    </application>
+
+    <!-- application on the right -->
+    <application role="browser">
+      <decor>no</decor>
+      <position force="no">
+        <x>50%</x>
+        <y>0</y>
+      </position>
+      <size>
+        <width>50%</width>
+        <height>100%</height>
+      </size>
+    </application>
+
+    <application class="Rhythmbox">
+      <decor>no</decor>
+      <position force="no">
+        <x>50%</x>
+        <y>0</y>
+      </position>
+      <size>
+        <width>50%</width>
+        <height>100%</height>
+      </size>
+    </application>
+
+    <application class="Shotwell">
+      <decor>no</decor>
+      <position force="no">
+        <x>50%</x>
+        <y>0</y>
+      </position>
+      <size>
+        <width>50%</width>
+        <height>100%</height>
+      </size>
+    </application>
+
+    <application class="Gedit">
+      <decor>no</decor>
+      <position force="no">
+        <x>50%</x>
+        <y>0</y>
+      </position>
+      <size>
+        <width>50%</width>
+        <height>100%</height>
+      </size>
+    </application>
+
+    <application class="Evince">
+      <decor>no</decor>
+      <position force="no">
+        <x>50%</x>
+        <y>0</y>
+      </position>
+      <size>
+        <width>50%</width>
+        <height>100%</height>
+      </size>
+    </application>
+
+    <application class="libreoffice-writer">
+      <decor>no</decor>
+      <position force="no">
+        <x>50%</x>
+        <y>0</y>
+      </position>
+      <size>
+        <width>50%</width>
+        <height>100%</height>
+      </size>
+    </application>
+
+    <application class="libreoffice-calc">
+      <decor>no</decor>
+      <position force="no">
+        <x>50%</x>
+        <y>0</y>
+      </position>
+      <size>
+        <width>50%</width>
+        <height>100%</height>
+      </size>
+    </application>
+
+    <application class="Dconf-editor">
+      <decor>no</decor>
+      <position force="no">
+        <x>50%</x>
+        <y>0</y>
+      </position>
+      <size>
+        <width>50%</width>
+        <height>100%</height>
+      </size>
+    </application>
+
+    <application class="Gnome-control-center">
+      <decor>no</decor>
+      <position force="no">
+        <x>50%</x>
+        <y>0</y>
+      </position>
+      <size>
+        <width>50%</width>
+        <height>100%</height>
+      </size>
+    </application>
+
+    <application class="mpv">
+      <decor>no</decor>
+      <position force="no">
+        <x>0</x>
+        <y>0</y>
+      </position>
+      <size>
+        <width>100%</width>
+        <height>100%</height>
+      </size>
+    </application>
+
+   <!-- application in the fullscreen -->
+
     <!--
   # this is an example with comments through out. use these to make your
   # own rules, but without the comments of course.
@@ -776,7 +954,7 @@
     # each rule element can be left out or set to 'default' to specify to not 
     # change that attribute of the window
 
-    <decor>yes</decor>
+    <decor>no</decor>
     # enable or disable window decorations
 
     <shade>no</shade>
