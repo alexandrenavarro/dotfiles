@@ -861,6 +861,30 @@
       </size>
     </application>
 
+    <application class="Eog">
+      <decor>no</decor>
+      <position force="no">
+        <x>50%</x>
+        <y>0</y>
+      </position>
+      <size>
+        <width>50%</width>
+        <height>100%</height>
+      </size>
+    </application>
+
+    <application class="feh">
+      <decor>no</decor>
+      <position force="no">
+        <x>50%</x>
+        <y>0</y>
+      </position>
+      <size>
+        <width>50%</width>
+        <height>100%</height>
+      </size>
+    </application>
+
     <application class="libreoffice-writer">
       <decor>no</decor>
       <position force="no">
@@ -909,6 +933,7 @@
       </size>
     </application>
 
+    <!-- application in the fullscreen -->
     <application class="mpv">
       <decor>no</decor>
       <position force="no">
@@ -921,7 +946,7 @@
       </size>
     </application>
 
-   <!-- application in the fullscreen -->
+
 
     <!--
   # this is an example with comments through out. use these to make your
