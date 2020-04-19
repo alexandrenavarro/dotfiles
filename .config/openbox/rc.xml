@@ -345,6 +345,7 @@
         </startupnotify>
         <command>kfmclient openProfile filemanagement</command>
       </action>
+    </keybind> 
     <!-- Keybindings for searching applications in the windows -->
     <keybind key="A-space">
       <action name="Execute">
