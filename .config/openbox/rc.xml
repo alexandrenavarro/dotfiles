@@ -326,6 +326,43 @@
         <command>scrot</command>
       </action>
     </keybind>
+    <!-- Keybindings for launching applications -->
+    <keybind key="W-e">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>Konqueror</name>
+        </startupnotify>
+        <command>kfmclient openProfile filemanagement</command>
+      </action>
+    </keybind>        
+    <!-- Keybindings for launching applications -->
+    <keybind key="W-e">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>Konqueror</name>
+        </startupnotify>
+        <command>kfmclient openProfile filemanagement</command>
+      </action>
+    <!-- Keybindings for searching applications in the windows -->
+    <keybind key="A-space">
+      <action name="Execute">
+        <command> rofi -combi-modi window -show-icons -show combi -modi combi</command>
+      </action>
+    </keybind>
+    <!-- Keybindings for rofi -->
+    <keybind key="W-S-Z">
+      <action name="Execute">
+        <command>rofi -combi-modi window,drun,run -show-icons -show combi -modi combi</command>
+      </action>
+    </keybind>
+    <!-- Keybindings for root-menu -->
+    <keybind key="W-r">
+      <action name="ShowMenu">
+        <menu>root-menu</menu>
+      </action>
+    </keybind>
     <!-- Keybindings for window move -->
     <keybind key="W-Left">
       <action name="If">
@@ -347,7 +384,7 @@
       <action name="ToggleMaximizeFull"/>
     </keybind>
     <keybind key="W-Down">
-      <action name="Iconify"/>
+      <action name="Unmaximize"/>
     </keybind>
     <keybind key="W-Right">
       <action name="If">
@@ -365,23 +402,7 @@
         <height>100%</height>
       </action>
     </keybind>
-    <keybind key="W-r">
-      <action name="ShowMenu">
-        <menu>root-menu</menu>
-      </action>
-    </keybind>
-    <!-- Keybindings for launching applications -->
-    <keybind key="W-S-Z">
-      <action name="Execute">
-        <command>rofi -combi-modi window,drun,run -show-icons -show combi -modi combi</command>
-      </action>
-    </keybind>
-    <!-- Keybindings for searching applications in the windows -->
-    <keybind key="A-space">
-      <action name="Execute">
-        <command> rofi -combi-modi window -show-icons -show combi -modi combi</command>
-      </action>
-    </keybind>
+
   </keyboard>
   <mouse>
     <dragThreshold>1</dragThreshold>
