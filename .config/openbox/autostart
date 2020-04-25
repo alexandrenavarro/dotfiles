@@ -1,3 +1,4 @@
-nitrogen --restore &
-tint2&
+feh --bg-fill ~/Pictures/wallpaper.png 
+compton &
+polybar example &
 volumeicon &
