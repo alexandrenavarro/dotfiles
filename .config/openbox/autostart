@@ -1,4 +1,3 @@
-feh --bg-fill ~/Pictures/wallpaper.png 
 compton &
-polybar example &
-volumeicon &
+feh --bg-fill ~/.config/wallpaper.png &
+polybar righttopbar &
