@@ -1155,6 +1155,17 @@
         <height>100%</height>
       </size>
     </application>
+    <application class="Baobab" type="normal">
+      <decor>no</decor>
+      <position force="no">
+        <x>50%</x>
+        <y>0</y>
+      </position>
+      <size>
+        <width>50%</width>
+        <height>100%</height>
+      </size>
+    </application>
     
     <!-- application in the fullscreen -->
     <application class="jetbrains-idea-ce" type="normal">
