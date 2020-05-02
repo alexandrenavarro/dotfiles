@@ -10,10 +10,8 @@
 ;============================================================
 
 [colors]
-background = #00000222
-background-alt = #444
-foreground = #dfdfdf
-foreground-alt = #555
+background = #00000000
+foreground = #ffffff
 
 red = #e53935
 pink = #d81b60
@@ -36,147 +34,103 @@ grey = #757575
 blue-gray = #546e7a
 
 
-[bar/centertopbar]
-override-redirect = true
-width = 50%
-height = 24
-offset-x = -10
-
-background = ${colors.background}
-foreground = ${colors.foreground}
-
-line-size = 3
-line-color = #f00
-
-module-margin-left = 1
-module-margin-right = 1
-
-font-0 = fixed:pixelsize=10;1
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = siji:pixelsize=10;1
-
-modules-right = xwindow
-
-
 [bar/righttopbar]
+monitor = DisplayPort-1
 override-redirect = true
 height = 24
-width = 16%
-offset-x = 84%
-
+width = 20%
+offset-x = 80%
 background = ${colors.background}
 foreground = ${colors.foreground}
 
 line-size = 3
 line-color = #f00
 
-module-margin-left = 1
-module-margin-right = 1
-
-font-0 = fixed:pixelsize=10;1
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = siji:pixelsize=10;1
-
-modules-right = pulseaudio memory cpu date empty-label
-
+; Must use a font Mono
+font-0 = "UbuntuMono-L:pixelsize=12;2"
+; for volume, down/up, mem and cpu, date and time.
+font-1 = "Material Icons:size=12;4"
 
 cursor-click = pointer
 cursor-scroll = ns-resize
 
-[module/xwindow]
-type = internal/xwindow
-label = %title:0:100:...%
+; Set to left if you want to use it, caution transparency does not work, change width also if needed.
+tray-position = none
+;tray-position = left
+tray-detached = false
+tray-maxsize = 16
+tray-background = ${root.background}
+tray-offset-x = -16
+tray-offset-y = 0
+tray-padding = 0
 
-[module/fs]
-type = internal/fs
-mount-0 = /
-mount-1 = /home
-fixed-values = true
-format-mounted = <label-mounted>
-format-unmounted = <label-unmounted>
-label-mounted = %mountpoint% %percentage_used%%
-label-mounted-underline = ${colors.green}
+module-margin-left = 1
+module-margin-right = 1
+
+; Module set
+modules-right = volume eth memory cpu datetime one-space-label
+
+
+[module/volume]
+type = internal/alsa
+format-volume = <ramp-volume> <label-volume>
+format-volume-underline = ${colors.green}
+label-volume = %percentage:3:3%%
+format-muted-prefix = 
+label-muted = " Mute"
+format-muted-underline = ${colors.green}
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-3 = 
+ramp-volume-4 = 
+ramp-volume-5 = 
+ramp-volume-6 = 
+ramp-volume-7 = 
+ramp-volume-8 = 
+ramp-volume-9 = 
 
 [module/eth]
 type = internal/network
 interface = enp4s0
 interval = 3.0
-
 format-connected = <label-connected>
 format-connected-underline = ${colors.purple}
 format-connected-padding = 1
-label-connected = %upspeed:9% %downspeed:9%
+label-connected =  %downspeed:8:8% %upspeed:8:8%
 format-disconnected = <label-disconnected>
 format-disconnected-padding = 1
 format-disconnected-underline = ${colors.purple}
 label-disconnected = 睊
-udspeed-minwidth = 5
-
-
-[module/pulseaudio]
-type = internal/pulseaudio
-
-format-volume = <label-volume> <bar-volume>
-label-volume = %percentage%%
-label-volume-foreground = ${root.foreground}
-label-muted = muted
-format-volume-underline = ${colors.green}
-
-bar-volume-width = 5
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
 
 
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = ""
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix = " "
 format-underline = ${colors.yellow}
-label = %mb_used%
+label = %mb_used:5:5%%
 
 
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = ""
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix = ""
 format-underline = ${colors.red}
-label = %percentage%%
+label = %percentage:3:3%%
 
 
-[module/date]
+[module/datetime]
 type = internal/date
-interval = 5
+interval = 1
+date =  %Y-%m-%d  %H:%M %p
+format-underline = ${colors.blue}
+label = %date%
 
-date =
-date-alt = " %Y-%m-%d"
+[module/one-space-label]
+type = custom/text
+content =  
 
-time = %H:%M
-time-alt = %H:%M:%S
-
-format-prefix = 
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #0a6cf5
-
-label = %date% %time%
-
-pulseaudio
-
-
-[module/empty-label]
+[module/two-space-label]
 type = custom/text
 content =   
