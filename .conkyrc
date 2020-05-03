@@ -1,0 +1,129 @@
+--[[
+Conky, a system monitor, based on torsmo
+
+Any original torsmo code is licensed under the BSD license
+
+All code written since the fork of torsmo is licensed under the GPL
+
+Please see COPYING for details
+
+Copyright (c) 2004, Hannu Saransaari and Lauri Hakkarainen
+Copyright (c) 2005-2019 Brenden Matthews, Philip Kovacs, et. al. (see AUTHORS)
+All rights reserved.
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+]]
+
+conky.config = {
+    own_window_transparent = true,
+    alignment = 'top_left',
+    background = false,
+    border_width = 1,
+    cpu_avg_samples = 2,
+    default_color = 'white',
+    default_outline_color = 'white',
+    default_shade_color = 'white',
+    double_buffer = true,
+    draw_borders = false,
+    draw_graph_borders = true,
+    draw_outline = false,
+    draw_shades = false,
+    extra_newline = false,
+    font = 'DejaVu Sans Mono:size=11',
+    gap_x = 1300,
+    gap_y = 32,
+    minimum_height = 5,
+    minimum_width = 5,
+    net_avg_samples = 2,
+    no_buffers = true,
+    out_to_console = false,
+    out_to_ncurses = false,
+    out_to_stderr = false,
+    out_to_x = true,
+    own_window = true,
+    own_window_class = 'Conky',
+    own_window_type = 'desktop',
+    show_graph_range = false,
+    show_graph_scale = false,
+    stippled_borders = 0,
+    update_interval = 3.0,
+    uppercase = false,
+    use_spacer = 'none',
+    use_xft = true,
+    use_spacer = left,
+    pad_percents = 0,
+}
+
+conky.text = [[
+${color white}SYSTEM ${hr 2}$color
+${color grey}Hostname$color ${alignr}$nodename
+${color grey}OS$color ${alignr}${exec hostnamectl | grep System | cut -c21-49}
+${color grey}Kernel$color ${alignr}$kernel
+
+${color white}CPU ${hr 2}$color
+${color grey}CPU$color ${alignr}$cpu%
+$cpubar
+$cpugraph
+${cpubar cpu1 12,80} ${cpubar cpu2 12,80} ${cpubar cpu3 12,80} ${cpubar cpu4 12,80}
+${cpubar cpu5 12,80} ${cpubar cpu6 12,80} ${cpubar cpu7 12,80} ${cpubar cpu8 12,80}
+${cpubar cpu9 12,80} ${cpubar cpu10 12,80} ${cpubar cpu11 12,80} ${cpubar cpu12 12,80}
+${cpubar cpu13 12,80} ${cpubar cpu14 12,80} ${cpubar cpu15 12,80} ${cpubar cpu16 12,80}
+
+#${cpu cpu1}% ${cpubar cpu1 12,65} ${cpu cpu2}% ${cpubar cpu2 12,65} ${cpu cpu3}% ${cpubar cpu3 12,65} ${cpu cpu4}% ${cpubar cpu4 12,65}
+#${cpu cpu5}% ${cpubar cpu5 12,65} ${cpu cpu6}% ${cpubar cpu6 12,65} ${cpu cpu7}% ${cpubar cpu7 12,65} ${cpu cpu8}% ${cpubar cpu8 12,65}
+#${cpu cpu9}% ${cpubar cpu9 12,65} ${cpu cpu10}% ${cpubar cpu10 12,65} ${cpu cpu11}% ${cpubar cpu11 12,65} ${cpu cpu12}% ${cpubar cpu12 12,65}
+#${cpu cpu13}% ${cpubar cpu13 12,65} ${cpu cpu14}% ${cpubar cpu14 12,65} ${cpu cpu15}% ${cpubar cpu15 12,65} ${cpu cpu16}% ${cpubar cpu16 12,65}
+#${color grey}CPU  1 :$color  ${cpu cpu1}% ${cpubar cpu1}
+#${color grey}CPU  2 :$color  ${cpu cpu2}% ${cpubar cpu2}
+#${color grey}CPU  3 :$color  ${cpu cpu3}% ${cpubar cpu3}
+#${color grey}CPU  4 :$color  ${cpu cpu4}% ${cpubar cpu4}
+#${color grey}CPU  5 :$color  ${cpu cpu5}% ${cpubar cpu5}
+#${color grey}CPU  6 :$color  ${cpu cpu6}% ${cpubar cpu6}
+#${color grey}CPU  7 :$color  ${cpu cpu7}% ${cpubar cpu7}
+#${color grey}CPU  8 :$color  ${cpu cpu8}% ${cpubar cpu8}
+#${color grey}CPU  9 :$color  ${cpu cpu9}% ${cpubar cpu9}
+#${color grey}CPU 10 :$color  ${cpu cpu10}% ${cpubar cpu10}
+#${color grey}CPU 11 :$color  ${cpu cpu11}% ${cpubar cpu11}
+#${color grey}CPU 12 :$color  ${cpu cpu12}% ${cpubar cpu12}
+#${color grey}CPU 13 :$color  ${cpu cpu13}% ${cpubar cpu13}
+#${color grey}CPU 14 :$color  ${cpu cpu14}% ${cpubar cpu14}
+#${color grey}CPU 15 :$color  ${cpu cpu15}% ${cpubar cpu15}
+#${color grey}CPU 16 :$color  ${cpu cpu16}% ${cpubar cpu16}
+#${color grey}NAME                      PID    CPU%   MEM%
+#${color #e5e5e5}${top name 1} ${alignr}${top pid 1} ${top cpu 1} ${top mem 1}
+#${color #c4c4c4}${top name 2} ${alignr}${top pid 2} ${top cpu 2} ${top mem 2}
+#${color #a3a3a3}${top name 3} ${alignr}${top pid 3} ${top cpu 3} ${top mem 3}
+
+${color white}MEMORY ${hr 2}$color
+${color grey}RAM$color${alignc}$mem/$memmax${alignc}${alignr}$memperc%
+$membar
+$memgraph
+#${color grey}NAME                      PID    CPU%   MEM%
+#${color #e5e5e5}${top_mem name 1} ${alignr}${top_mem pid 1} ${top_mem cpu 1} ${top_mem mem 1}
+#${color #c4c4c4}${top_mem name 2} ${alignr}${top_mem pid 2} ${top_mem cpu 2} ${top_mem mem 2}
+#${color #a3a3a3}${top_mem name 3} ${alignr}${top_mem pid 3} ${top_mem cpu 3} ${top_mem mem 3}
+
+${color white}DISK ${hr 2}$color
+${color grey}/ ${alignr}$color${fs_used /}/${fs_size /} (${fs_free /} ${fs_free_perc /}% free)
+${fs_bar /}
+${color grey}/home ${alignr}$color${fs_used /home}/${fs_size /home} (${fs_free /home} ${fs_free_perc /home}% free)
+${fs_bar /home}
+
+${color white}NETWORK ${hr 2}$color
+${color grey}Down$color ${alignr}${downspeed enp4s0}/s
+${downspeedgraph enp4s0}
+${color grey}Up$color ${alignr}${upspeed enp4s0}/s
+${upspeedgraph enp4s0}
+]]
+
+
