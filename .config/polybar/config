@@ -38,8 +38,8 @@ blue-gray = #546e7a
 monitor = DisplayPort-1
 override-redirect = true
 height = 24
-width = 20%
-offset-x = 80%
+width = 30%
+offset-x = 70%
 background = ${colors.background}
 foreground = ${colors.foreground}
 
@@ -47,7 +47,7 @@ line-size = 3
 line-color = #f00
 
 ; Must use a font Mono
-font-0 = "UbuntuMono-L:pixelsize=12;2"
+font-0 = "DejaVuSansMono:pixelsize=11;2"
 ; for volume, down/up, mem and cpu, date and time.
 font-1 = "Material Icons:size=12;4"
 
@@ -68,7 +68,7 @@ module-margin-left = 1
 module-margin-right = 1
 
 ; Module set
-modules-right = volume eth memory cpu datetime one-space-label
+modules-right = cpu memory eth volume datetime one-space-label
 
 
 [module/volume]
@@ -107,18 +107,42 @@ label-disconnected = 睊
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = " "
+format = <label> <ramp-used>
 format-underline = ${colors.yellow}
-label = %mb_used:5:5%%
-
+label =  %mb_used:5:5%
+bar-used-indicator =
+bar-used-width = 20
+bar-used-foreground-0 = #55aa55
+bar-used-foreground-1 = #557755
+bar-used-foreground-2 = #f5a70a
+bar-used-foreground-3 = #ff5555
+bar-used-fill = ▐
+bar-used-empty = ▐
+bar-used-empty-foreground = #444444
+ramp-used-0 = ▁
+ramp-used-1 = ▂
+ramp-used-2 = ▃
+ramp-used-3 = ▄
+ramp-used-4 = ▅
+ramp-used-5 = ▆
+ramp-used-6 = ▇
+ramp-used-7 = █
 
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = ""
 format-underline = ${colors.red}
-label = %percentage:3:3%%
-
+format =<ramp-coreload> <label>
+label = %percentage:3:3%% 
+ramp-coreload-spacing = 1
+ramp-coreload-0 = ▁
+ramp-coreload-1 = ▂
+ramp-coreload-2 = ▃
+ramp-coreload-3 = ▄
+ramp-coreload-4 = ▅
+ramp-coreload-5 = ▆
+ramp-coreload-6 = ▇
+ramp-coreload-7 = █
 
 [module/datetime]
 type = internal/date
