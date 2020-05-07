@@ -1,6 +1,6 @@
 map <enter> open
 map <bs2> updir
-
+map <f-2> rename
 map <c-q> quit
 map <delete> delete
 map <c-u> unselect
@@ -8,9 +8,8 @@ map <c-c> copy
 map <c-x> cut
 map <c-v> paste
 map <c-f> find
-
-
-
+map h set hidden!
+set previewer ~/.config/lf/preview.sh
 
 # Archive bindings
 cmd unarchive ${{
@@ -27,3 +26,4 @@ cmd zip %zip -r "$f" "$f"
 cmd tar %tar cvf "$f.tar" "$f"
 cmd targz %tar cvzf "$f.tar.gz" "$f"
 cmd tarbz2 %tar cjvf "$f.tar.bz2" "$f"
+
