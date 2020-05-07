@@ -1,4 +1,5 @@
 {
-    "Alt-/": "lua:comment.comment",
-    "Ctrl-F4": "Quit"
+    "Alt-/": "lua:comment.comment",    
+    "CtrlW": "Quit",
+    "F3": "FindNext",
 }
