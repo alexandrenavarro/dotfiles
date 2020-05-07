@@ -1,4 +1,5 @@
 compton &
 feh --bg-fill ~/.config/wallpaper.png &
 polybar righttopbar &
-xautolock -time 5 -locker 'dm-tool lock' &
+xset s 300 &
+light-locker --lock-after-screensaver 1&
