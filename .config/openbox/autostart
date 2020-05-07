@@ -1,3 +1,4 @@
 compton &
 feh --bg-fill ~/.config/wallpaper.png &
 polybar righttopbar &
+xautolock -time 5 -locker 'dm-tool lock' &
