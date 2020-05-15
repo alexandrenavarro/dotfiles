@@ -1,0 +1,117 @@
+## KISS theme by weedfast ##
+## http://ubunblox.serhome.org/ ##
+
+
+# COLORS : black, red, green, yellow, blue, magenta, cyan, white, default
+# OPTIONS : normal, standout, underline, reverse, blink, dim, bold, protect
+
+##BEGIN##
+
+# [Name ]		[ FG ]		[ BG ]		[Options]
+
+# background         - default background for regions when nothing is displayed
+background		= default	default
+
+# frame              - frames for windows
+frame			= blue		default
+
+# window_title       - the title of the window (eg name of the current directory)
+window_title		= blue		default		bold
+
+# directory          - a directory in the menu
+directory		= white		default	
+
+# selected_directory - a directory that is selected using arrows
+selected_directory	= white		blue		bold
+
+# playlist           - playlist file
+playlist		= white		default
+
+# selected_playlist  - see selected directory
+selected_playlist	= white		blue		bold
+
+# file               - an ordinary file in the menu (mp3, ogg, ...)
+file			= white		default
+
+# selected_file      - see selected directory
+selected_file		= white		blue		bold
+
+# marked_file        - a file that is currently being played
+marked_file		= green		default		bold
+
+# marked_selected_file - a file that is currently being played and is also selected using arrows
+marked_selected_file	= green		blue		bold
+
+# info               - information shown at the right side of files
+info			= blue		default
+
+# selected_info      - see selected directory
+#selected_info		= red		blue		
+
+# marked_info        - a file (its time) that is currently being played
+#marked_info		= yellow	yellow
+
+# marked_selected_info - a file (its time) that is currently being played and is also selected using arrows
+#marked_selected_info	= blue		red
+
+# status             - the status line with a message
+status			= blue		default		bold
+
+# title              - the title of the file that is currently being played
+title			= green		default		bold
+
+# state              - the state: play, stop, or paused (>, [], ||)
+state			= white		default		bold,blink
+
+# current_time       - current time of playing
+current_time		= white		default		bold
+
+# time_left          - the time left to the end of playing the current file
+time_left		= white		default		bold
+
+# total_time         - the length of the currently played file
+total_time		= white		default		bold
+
+# time_total_frames  - the brackets outside the total time of a file ([10:13])
+time_total_frames	= blue		default
+
+# sound_parameters   - the frequency and bitrate numbers
+sound_parameters	= white		default		bold
+
+# legend             - "KHz" and "Kbps"
+legend			= white		default
+
+# disabled           - disabled element ([STEREO])
+disabled		= white		default		bold
+
+# enabled            - enabled element
+enabled			= blue		default		bold
+
+# empty_mixer_bar    - "empty" part of the volume bar
+empty_mixer_bar		= default	default
+
+# filled_mixer_bar   - "filled" part of the volume bar
+filled_mixer_bar	= white		blue
+
+# empty_time_bar     - "empty" part of the time bar
+empty_time_bar		= default		default
+
+# filled_time_bar    - "filled" part of the time bar
+filled_time_bar		= default	blue
+
+# entry              - place wher user can type a search query or a file name
+entry			= white		default
+
+# entry_title        - the title of an entry
+entry_title		= green		default		dim
+
+# error              - error message
+error			= red		default		bold
+
+# message            - information message
+message			= green		default		bold
+
+# plist_time         - total time of displayed items
+plist_time		= blue		default		bold
+
+##END##
