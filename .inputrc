@@ -1,0 +1,20 @@
+# For all terminals
+"\C-x": ""
+
+# For Mate Terminal (linux)
+"\e[1;6D": backward-kill-word
+"\e[1;6C": kill-word
+
+# For Intellij terminal (linux)
+"\e[6D": backward-kill-word
+"\e[6C": kill-word
+"\e[2H": backward-kill-line
+"\e[2F": kill-line
+"\e[5C": forward-word
+"\e[5D": backward-word
+
+# For Git bash (windows) and Intellij terminal (windows)
+"\e[1;6D": backward-kill-word
+"\e[1;6C": kill-word
+"\e[1;2~": backward-kill-line
+"\e[4;2~": kill-line
