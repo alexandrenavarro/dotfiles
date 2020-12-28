@@ -1,0 +1,33 @@
+#! /bin/sh
+pgrep -x sxhkd > /dev/null || sxhkd &
+
+# Compositor for transparency
+#compton &
+
+# Set the wallpaper
+feh --bg-fill ~/.config/wallpaper.jpg &
+
+# Add a polybar on the rigth top
+#polybar righttopbar &
+
+# dunst
+#dunst &
+
+# ?
+/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
+
+#Fix problem for java application
+wmname LG3D &
+
+# Bsp Monitor
+bspc monitor -d I II III IV
+
+# Bsp Config
+bspc config border_width         2
+bspc config window_gap           8
+bspc config automatic_scheme     alternate
+
+# Bspc Rule
+bspc rule -a jetbrains-idea-ce state=floating 
+bspc rule -a cura state=floating 
+bspc rule -a Zathura state=tiled
