@@ -1,8 +1,8 @@
 #!/bin/sh
 pgrep -x sxhkd > /dev/null || sxhkd &
 
-# Compositor for transparency
-compton &
+# Compositor for transparency (no need now, maybe for trayer)
+#compton &
 
 # Set the wallpaper
 feh --bg-fill ~/.config/wallpaper.jpg &
@@ -15,6 +15,8 @@ feh --bg-fill ~/.config/wallpaper.jpg &
 
 # System Tray : trayer or stalonetray (to test / configure it)
 #trayer &
+
+#xautolock -time 1 -locker "dm-tool lock" &
 
 # For keep authentication on mounting network drive
 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
@@ -44,6 +46,7 @@ bspc rule -a digikam desktop=2 follow=on
 
 # Desktop 3 : File Manager
 bspc rule -a Thunar desktop=3 follow=on
+bspc rule -a URxvt:lf desktop=3 follow=on
 bspc rule -a Zathura state=tiled 
 
 # Desktop 4 : Mail / Chat Client
@@ -51,3 +54,5 @@ bspc rule -a thunderbird desktop=4 follow=on
 
 # Desktop 5 : Music Player / Torrent Client (Background tools)
 bspc rule -a Transmission-gtk desktop=5 follow=on
+bspc rule -a URxvt:htop desktop=5 follow=on
+
