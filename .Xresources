@@ -1,2 +1,31 @@
+# Global settings (used in URxvt notably)
 *foreground: #ffffff
 *background: #000000
+
+# URxvt
+URxvt.font:xft:Ubuntu Mono:pixelsize=16,style=regular
+URxvt*scrollBar: true
+URxvt*scrollBar_right: true
+URxvt*scrollColor: #ffffff
+URxvt*scrollBar_floating: true
+URxvt*scrollstyle: plain
+#URxvt*saveLines: 0  # Useful only if you use with a terminal multiplexer like tmux
+
+URxvt.perl-ext:
+URxvt.perl-ext-common:
+
+URxvt.keysym.C-Left: \033[1;5D
+URxvt.keysym.C-Right: \033[1;5C
+URxvt.keysym.C-Up: \033[1;5A
+URxvt.keysym.C-Down: \033[1;5B
+
+URXvt.keysym.S-C-Left: \033[1;6D  # Does not work, don't know why, it does \033[1;5D
+URxvt.keysym.S-C-Right: \033[1;6C
+URxvt.keysym.S-C-Up: \033[1;6A
+URxvt.keysym.S-C-Down: \033[1;6B
+
+URxvt.keysym.S-C-Home: \033[1;6H
+URxvt.keysym.S-C-End: \033[1;6F
+
+URxvt.iso14755: false
+URxvt.iso14755_52: false
