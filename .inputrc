@@ -1,8 +1,14 @@
 # For all terminals
+# use showkey -a or cat -v to know which the sequence of characters used by your terminal
 "\C-x": ""
 
 # For Mate Terminal (linux)
 "\e[1;6D": backward-kill-word
+"\e[1;6C": kill-word
+
+# For rxvt Terminal (linux)
+"\e[7$": backward-kill-line
+"\e[1;5D": backward-kill-word
 "\e[1;6C": kill-word
 
 # For Intellij terminal (linux)
