@@ -1,5 +1,19 @@
 {
-    "Alt-/": "lua:comment.comment",    
+    "Alt-/": "lua:comment.comment",
+    "CtrlDown": "ParagraphNext",
+    "CtrlUp": "ParagraphPrevious",
+    "CtrlUnderscore": "lua:comment.comment",
     "CtrlW": "Quit",
     "F3": "FindNext",
+    "Ctrl-e":"CommandMode",
+    "\u001b[1;5D": "WordLeft",
+    "\u001b[1;5C": "WordRight",
+    "\u001b[1;5A": "ParagraphPrevious",
+    "\u001b[1;5B": "ParagraphNext",
+    "\u001b[1;6A": "ParagraphPrevious",
+    "\u001b[1;6B": "ParagraphNext",    
+    "\u001b[1;6D": "SelectWordLeft",
+    "\u001b[1;6C": "SelectWordRight",
+    "\u001b[1;6H": "SelectToStart",
+    "\u001b[1;6F": "SelectToEnd"    
 }
