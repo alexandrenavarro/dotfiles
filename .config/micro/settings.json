@@ -35,7 +35,7 @@
     "readonly": false,
     "rmtrailingws": false,
     "ruler":true,
-    "rulerhybrid": true,
+    "relativeruler": true,
     "savecursor": false,
     "savehistory": true,
     "saveundo": false,
