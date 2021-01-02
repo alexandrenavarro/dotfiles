@@ -27,10 +27,10 @@ URxvt.iso14755_52: false
 !URxvt.keysym.Page_Down       : \033[6~ !breaks scrolling in Rxvt
 !URxvt.keysym.Home            : \033[H  !breaks navigation in Vim
 !URxvt.keysym.End             : \033[F  !breaks navigation in Vim
-URxvt.keysym.S-Up             : \033[1;2A
-URxvt.keysym.S-Down           : \033[1;2B
-URxvt.keysym.S-Right          : \033[1;2C
-URxvt.keysym.S-Left           : \033[1;2D
+!URxvt.keysym.S-Up            : \033[1;2A  !breaks micro
+!URxvt.keysym.S-Down          : \033[1;2B  !breaks micro
+!URxvt.keysym.S-Right          : \033[1;2C !breaks micro
+!URxvt.keysym.S-Left           : \033[1;2D !breaks micro
 !URxvt.keysym.S-Page_Up       : captured by terminal for scrolling
 !URxvt.keysym.S-Page_Down     : captured by terminal for scrolling
 URxvt.keysym.S-Home           : \033[1;2H
