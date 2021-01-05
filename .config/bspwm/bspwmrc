@@ -16,12 +16,13 @@ feh --bg-fill ~/.config/wallpaper.jpg &
 # System Tray : trayer or stalonetray (to test / configure it)
 #trayer &
 
-# Set Screen saver afer 5 min and Lock after screensaver launched
-xset s 300 &
+# Set Screen saver afer 2 min and Lock after screensaver launched
+xset s 120 &
 light-locker --lock-after-screensaver 1 &
 
 # For keep authentication on mounting network drive
 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
+
 
 #Fix problem for java application
 wmname LG3D &
@@ -33,7 +34,7 @@ bspc monitor -d 1 2 3 4 5
 bspc desktop 2 --layout monocle
 
 # Bsp Config
-bspc config border_width         2
+bspc config border_width         4
 bspc config window_gap           8
 bspc config automatic_scheme     alternate
 
@@ -58,3 +59,5 @@ bspc rule -a thunderbird desktop=4 follow=on
 bspc rule -a Transmission-gtk desktop=5 follow=on
 bspc rule -a URxvt:htop desktop=5 follow=on
 
+# Script for lf to set preview only on focus
+~/.config/lf/lf-preview-only-on-focus.sh &
