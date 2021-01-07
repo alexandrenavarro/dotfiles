@@ -23,6 +23,8 @@ light-locker --lock-after-screensaver 1 &
 # For keep authentication on mounting network drive
 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 
+# Mount automatically usb disk
+udiskie &
 
 #Fix problem for java application
 wmname LG3D &
@@ -34,8 +36,8 @@ bspc monitor -d 1 2 3 4 5
 bspc desktop 2 --layout monocle
 
 # Bsp Config
-bspc config border_width         4
-bspc config window_gap           8
+bspc config border_width         2
+bspc config window_gap           4
 bspc config automatic_scheme     alternate
 
 # Bspc Rule
