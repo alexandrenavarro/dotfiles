@@ -2,7 +2,7 @@
 pgrep -x sxhkd > /dev/null || sxhkd &
 
 # Compositor for transparency (no need now, maybe for trayer)
-#compton &
+compton &
 
 # Set the wallpaper
 feh --bg-fill ~/.config/wallpaper.jpg &
@@ -13,11 +13,11 @@ feh --bg-fill ~/.config/wallpaper.jpg &
 # Notifications : dunst or deadd (to test / configure it)
 #dunst &
 
-# System Tray : trayer or stalonetray (to test / configure it)
-#trayer &
+# System Tray : trayer or stalonetray (problem with transparenty)
+#trayer --edge top --align right --SetDockType true  --expand true --width 4 --transparent true --alpha 0 --tint 0x353535 --height 24 --margin 8 --distance 8 &
 
-# Set Screen saver afer 2 min and Lock after screensaver launched
-xset s 120 &
+# Set Screen saver afer 3 min and Lock after screensaver launched
+xset s 180 &
 light-locker --lock-after-screensaver 1 &
 
 # For keep authentication on mounting network drive
@@ -48,6 +48,7 @@ bspc rule -a Firefox-esr desktop=1 follow=on
 bspc rule -a jetbrains-idea-ce desktop=2 follow=on
 bspc rule -a cura desktop=2 follow=on
 bspc rule -a digikam desktop=2 follow=on
+bspc rule -a simple-scan desktop=2 follow=on
 
 # Desktop 3 : File Manager
 bspc rule -a Thunar desktop=3 follow=on
@@ -63,3 +64,5 @@ bspc rule -a URxvt:htop desktop=5 follow=on
 
 # Script for lf to set preview only on focus
 ~/.config/lf/lf-preview-only-on-focus.sh &
+
+urxvt &
