@@ -18,7 +18,8 @@ case "$1" in
 	*.doc) catdoc "$1" ;;
 	*.docx) docx2txt "$1" - ;;
 	*.csv) cat "$1" | sed s/,/\\n/g ;;
-	*.bmp|*.jpg|*.jpeg|*.png|*.xpm) mediainfo "$1";;
+#	*.bmp|*.jpg|*.jpeg|*.png|*.xpm) chafa --fill=block --symbols=block -c 256 -s 92x"${HEIGHT}" "${FILE}" "$1";;
+	*.bmp|*.jpg|*.jpeg|*.png|*.xpm) jp2a "$1";;
 	*.avi|*.mp4|*.wmv|*.dat|*.3gp|*.ogv|*.mkv|*.mpg|*.mpeg|*.vob|*.fl[icv]|*.m2v|*.mov|*.webm|*.ts|*.mts|*.m4v|*.r[am]|*.qt|*.divx) mediainfo "$1";;
 	*.pdf) pdftotext "$1" - | less;;
 	*.epub) mediainfo "$1";;
