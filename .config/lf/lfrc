@@ -1,18 +1,47 @@
+set previewer ~/.config/lf/preview.sh
+set preview off
+set drawbox true
+set color256
+#set icons true
+set ignorecase true
+
+
 map <enter> open
 map <bs2> updir
 map <f-2> rename
 map <c-q> quit
+map <c-w> quit
 map <delete> delete
 map <c-u> unselect
 map <c-c> copy
 map <c-x> cut
 map <c-v> paste
+map <c-V> paste-async
 map <c-f> find
-map h set hidden!
-set previewer ~/.config/lf/preview.sh
+map <bs> set hidden!
+map <f-5> reload
+
+# Asynchronus paste with rsync
+cmd paste-async &{{
+    load=$(lf -remote 'load')
+    mode=$(echo "$load" | sed -n '1p')
+    list=$(echo "$load" | sed '1d')
+    if [ $mode = 'copy' ]; then
+        rsync -av --ignore-existing --progress $list . \
+        | stdbuf -i0 -o0 -e0 tr '\r' '\n' \
+        | while read line; do
+            lf -remote "send $id echo $line"
+        done
+    elif [ $mode = 'move' ]; then
+        mv -n $list .
+    fi
+    lf -remote 'send load'
+    lf -remote 'send clear'
+}}
+
 
 # Archive bindings
-cmd unarchive ${{
+cmd extract ${{
   case "$f" in
       *.zip) unzip "$f" ;;
       *.tar.gz) tar -xzvf "$f" ;;
@@ -26,4 +55,30 @@ cmd zip %zip -r "$f" "$f"
 cmd tar %tar cvf "$f.tar" "$f"
 cmd targz %tar cvzf "$f.tar.gz" "$f"
 cmd tarbz2 %tar cjvf "$f.tar.bz2" "$f"
+
+cmd mkdir ${{
+  printf "Directory Name: "
+  read ans
+  mkdir $ans
+}}
+
+cmd mkfile ${{
+  printf "File Name: "
+  read ans
+  $EDITOR $ans
+}}
+
+cmd chmod ${{
+  printf "Mode Bits: "
+  read ans
+
+  for file in "$fx"
+  do
+    chmod $ans $file
+  done
+
+  lf -remote 'send reload'
+}}
+
+
 
