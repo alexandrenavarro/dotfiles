@@ -9,6 +9,10 @@
 ;=                                                          =
 ;============================================================
 
+
+[global/wm]
+margin-top = 24
+
 [colors]
 background = #00000000
 foreground = #ffffff
@@ -33,15 +37,38 @@ brown = #6d4c41
 grey = #757575
 blue-gray = #546e7a
 
+[bar/systemtray]
+modules-right = one-space-label
+tray-position = right
+tray-background = #353535
+tray-offset-x = -6
+background = ${colors.background}
+override-redirect = true
+width = 2%
+offset-x = 98%
+offset-y = 6
+;tray-detached = false
+;tray-maxsize = 24
+;tray-background = ${root.background}
+;tray-background = #00000000
+;tray-offset-y = 0
+;tray-padding = 0
+
+
+
 
 [bar/righttopbar]
-monitor = DisplayPort-1
-override-redirect = true
+;monitor = DisplayPort-1
+;wm-restack = bspwm
+wm-restack = true
+poverride-redirect = false
 height = 24
-width = 30%
-offset-x = 70%
+width = 100%
+offset-x = 24
+; offset-y = 10
 background = ${colors.background}
 foreground = ${colors.foreground}
+margin-top = 24
 
 line-size = 3
 line-color = #f00
@@ -55,8 +82,8 @@ cursor-click = pointer
 cursor-scroll = ns-resize
 
 ; Set to left if you want to use it, caution transparency does not work, change width also if needed.
-tray-position = none
-;tray-position = left
+;tray-position = none
+tray-position = left
 tray-detached = false
 tray-maxsize = 16
 tray-background = ${root.background}
@@ -70,6 +97,59 @@ module-margin-right = 1
 ; Module set
 modules-right = cpu memory eth volume datetime one-space-label
 
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-underline = ${colors.red}
+format =<ramp-coreload> <label>
+label = %percentage:3:3%% 
+ramp-coreload-spacing = 1
+ramp-coreload-0 = ▁
+ramp-coreload-1 = ▂
+ramp-coreload-2 = ▃
+ramp-coreload-3 = ▄
+ramp-coreload-4 = ▅
+ramp-coreload-5 = ▆
+ramp-coreload-6 = ▇
+ramp-coreload-7 = █
+
+
+[module/memory]
+type = internal/memory
+interval = 2
+format = <label> 
+format-underline = ${colors.yellow}
+label =  %mb_used:8:8% / %mb_total:8:8%
+bar-used-indicator =
+bar-used-width = 20
+bar-used-foreground-0 = #55aa55
+bar-used-foreground-1 = #557755
+bar-used-foreground-2 = #f5a70a
+bar-used-foreground-3 = #ff5555
+bar-used-fill = ▐
+bar-used-empty = ▐
+bar-used-empty-foreground = #444444
+ramp-used-0 = ▁
+ramp-used-1 = ▂
+ramp-used-2 = ▃
+ramp-used-3 = ▄
+ramp-used-4 = ▅
+ramp-used-5 = ▆
+ramp-used-6 = ▇
+ramp-used-7 = █
+
+[module/eth]
+type = internal/network
+interface = enp4s0
+interval = 2.0
+format-connected = <label-connected>
+format-connected-underline = ${colors.purple}
+format-connected-padding = 1
+label-connected =  %downspeed:8:8% %upspeed:8:8%
+format-disconnected = <label-disconnected>
+format-disconnected-padding = 1
+format-disconnected-underline = ${colors.purple}
+label-disconnected = 睊
 
 [module/volume]
 type = internal/alsa
@@ -89,60 +169,6 @@ ramp-volume-6 = 
 ramp-volume-7 = 
 ramp-volume-8 = 
 ramp-volume-9 = 
-
-[module/eth]
-type = internal/network
-interface = enp4s0
-interval = 3.0
-format-connected = <label-connected>
-format-connected-underline = ${colors.purple}
-format-connected-padding = 1
-label-connected =  %downspeed:8:8% %upspeed:8:8%
-format-disconnected = <label-disconnected>
-format-disconnected-padding = 1
-format-disconnected-underline = ${colors.purple}
-label-disconnected = 睊
-
-
-[module/memory]
-type = internal/memory
-interval = 2
-format = <label> 
-format-underline = ${colors.yellow}
-label =  %mb_used:5:5%
-bar-used-indicator =
-bar-used-width = 20
-bar-used-foreground-0 = #55aa55
-bar-used-foreground-1 = #557755
-bar-used-foreground-2 = #f5a70a
-bar-used-foreground-3 = #ff5555
-bar-used-fill = ▐
-bar-used-empty = ▐
-bar-used-empty-foreground = #444444
-ramp-used-0 = ▁
-ramp-used-1 = ▂
-ramp-used-2 = ▃
-ramp-used-3 = ▄
-ramp-used-4 = ▅
-ramp-used-5 = ▆
-ramp-used-6 = ▇
-ramp-used-7 = █
-
-[module/cpu]
-type = internal/cpu
-interval = 2
-format-underline = ${colors.red}
-format =<ramp-coreload> <label>
-label = %percentage:3:3%% 
-ramp-coreload-spacing = 1
-ramp-coreload-0 = ▁
-ramp-coreload-1 = ▂
-ramp-coreload-2 = ▃
-ramp-coreload-3 = ▄
-ramp-coreload-4 = ▅
-ramp-coreload-5 = ▆
-ramp-coreload-6 = ▇
-ramp-coreload-7 = █
 
 [module/datetime]
 type = internal/date
