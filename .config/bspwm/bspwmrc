@@ -28,7 +28,7 @@ udiskie &
 wmname LG3D &
 
 # Bsp Monitor
-bspc monitor -d 1 2 3 4 5 6
+bspc monitor -d 0 1 2 3 4 5 6
 
 # Bsp Desktop
 bspc desktop 2 --layout monocle
@@ -65,6 +65,10 @@ bspc rule -a URxvt:htop desktop=6 follow=on
 
 # Script for lf to set preview only on focus
 ~/.config/lf/lf-preview-only-on-focus.sh &
+
+# Go to desktop 1
+bspc desktop -f 1
+
 
 # Launch a terminal
 urxvt &
