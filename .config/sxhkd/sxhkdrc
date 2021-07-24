@@ -185,7 +185,7 @@ super + control + {left,right}
 	bspc desktop -f {prev,next}.local
 
 # Focus or send to the given desktop
-super + shift {_,alt + }{1-5}
-	bspc {desktop -f,node -d} '^{1-5}'
+super + shift {_,alt + }{0,1,2,3,4,5,6}
+	bspc {desktop -f,node -d} '{0,1,2,3,4,5,6}'
 
 
