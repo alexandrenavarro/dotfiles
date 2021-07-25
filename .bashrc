@@ -124,10 +124,18 @@ alias mi='micro'
 alias openf='xdg-open $(sk --preview "~/.config/lf/preview.sh {}")'
 
 export QT_QPA_PLATFORMTHEME="qt5ct"
-export _JAVA_AWT_WM_NONREPARTENTING=1
-
 export EDITOR=micro
-export PATH=$PATH:~/Applications:~/.cargo/bin
+export PATH=~/Applications:$PATH
+
+export BOARD_HARDWARE_PATH=~/Arduino/hardware
+export ARDUINO_PATH=/usr/local/arduino
+export QT_QPA_PLATFORMTHEME="qt5ct"
+export EDITOR=micro
+export PATH=~/Applications:$PATH
+
+export BOARD_HARDWARE_PATH=~/Arduino/hardware
+export ARDUINO_PATH=/usr/local/arduino
+
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/anavarro/.sdkman"
