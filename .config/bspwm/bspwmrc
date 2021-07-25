@@ -30,6 +30,9 @@ wmname LG3D &
 # Bsp Monitor
 bspc monitor -d 0 1 2 3 4 5 6
 
+bspc monitor HDMI-A-0 -d 0 1 2 3 4 5 6
+bspc monitor DisplayPort-0 -d 0 1 2 3 4 5 6
+
 # Bsp Desktop
 bspc desktop 2 --layout monocle
 
@@ -39,9 +42,13 @@ bspc config window_gap           4
 bspc config automatic_scheme     longest_side
 
 # Bspc Rule
+# Desktop 0 : Others
+bspc rule -a "Brave-browser:miro.com__app_dashboard" desktop=0 follow=on
+bspc rule -a "Brave-browser:eurecia" desktop=0 follow=on
+
 # Desktop 1 : Web Browser
-bspc rule -a Firefox-esr desktop=1 follow=on
 bspc rule -a Brave-browser desktop=1 follow=on
+bspc rule -a Firefox-esr desktop=1 follow=on
 bspc rule -a Tor Browser desktop=1 follow=on
 
 # Desktop 2 : Work (generally full screen apps like IDE)
@@ -51,17 +58,21 @@ bspc rule -a digikam desktop=2 follow=on
 bspc rule -a Simple-scan desktop=2 follow=on
 
 # Desktop 3 : File Manager
-bspc rule -a Thunar desktop=3 follow=on
 bspc rule -a URxvt:lf desktop=3 follow=on
-bspc rule -a Zathura state=tiled 
+bspc rule -a Thunar desktop=3 follow=on
 
-# Desktop 4 : Mail / Chat Client
-bspc rule -a thunderbird desktop=4 follow=on
-bspc rule -a Slack desktop=4 follow=on
+# Desktop 4 : Mail
+bspc rule -a "Brave-browser:gmail.com" desktop=4 follow=on
 
-# Desktop 5 : Music Player / Torrent Client (Background tools)
-bspc rule -a Transmission-gtk desktop=6 follow=on
-bspc rule -a URxvt:htop desktop=6 follow=on
+# Desktop 5 : Chat
+bspc rule -a Slack desktop=5 follow=on
+
+# Desktop 6 : Meeting / Calendar
+bspc rule -a "Brave-browser:meet.google.com" desktop=6 follow=on
+bspc rule -a "Brave-browser:calendar.google.com" desktop=6 follow=on
+
+# Others
+bspc rule -a Zathura state=tiled
 
 # Script for lf to set preview only on focus
 ~/.config/lf/lf-preview-only-on-focus.sh &
