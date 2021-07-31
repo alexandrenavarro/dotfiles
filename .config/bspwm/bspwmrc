@@ -44,7 +44,6 @@ bspc config automatic_scheme     longest_side
 # Bspc Rule
 # Desktop 0 : Others
 bspc rule -a "Brave-browser:miro.com__app_dashboard" desktop=0 follow=on
-bspc rule -a "Brave-browser:eurecia" desktop=0 follow=on
 
 # Desktop 1 : Web Browser
 bspc rule -a Brave-browser desktop=1 follow=on
