@@ -3,8 +3,8 @@
 *background: #000000
 
 ! URxvt
-URxvt.font:xft:Ubuntu Mono:pixelsize=16,style=regular
-
+!URxvt.font:xft:Ubuntu Mono:pixelsize=16,style=regular
+URxvt.font: xft:MesloLGS NF:size=11
 URxvt*scrollBar: true
 URxvt*scrollBar_right: true
 URxvt*scrollColor: #ffffff
@@ -63,6 +63,7 @@ URxvt.keysym.C-S-Up           : \033[1;6A
 URxvt.keysym.C-S-Down         : \033[1;6B
 URxvt.keysym.C-S-Right        : \033[1;6C
 URxvt.keysym.C-S-Left         : \033[1;6D
+
 !URxvt.keysym.C-S-Page_Up     : seen as Rxvt.keysym.S-Page_Up
 !URxvt.keysym.C-S-Page_Down   : seen as Rxvt.keysym.S-Page_Down
 URxvt.keysym.C-S-Home         : \033[1;6H
