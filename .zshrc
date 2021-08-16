@@ -7,7 +7,7 @@
 
 
 # Antigen zsh Plugin manager
-source ~/Applications/antigen.zsh
+source ~/bin/antigen.zsh
 
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
@@ -38,211 +38,24 @@ antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 antigen bundle MichaelAquilina/zsh-auto-notify
 antigen bundle MichaelAquilina/zsh-you-should-use
-#antigen bundle marlonrichert/zsh-autocomplete
+antigen bundle marlonrichert/zsh-autocomplete
 antigen bundle zsh-users/zsh-history-substring-search
 
 # Load the theme.
 antigen theme romkatv/powerlevel10k
+#antigen theme spaceship-prompt/spaceship-prompt
 
 # Tell Antigen that you're done.
 antigen apply
 
-# For lf
-export LF_ICONS="\
-tw=:\
-st=:\
-ow=:\
-dt=:\
-di=:\
-fi=:\
-ln=:\
-or=:\
-ex=:\
-*.c=:\
-*.cc=:\
-*.clj=:\
-*.coffee=:\
-*.cpp=:\
-*.css=:\
-*.d=:\
-*.dart=:\
-*.erl=:\
-*.exs=:\
-*.fs=:\
-*.go=:\
-*.h=:\
-*.hh=:\
-*.hpp=:\
-*.hs=:\
-*.html=:\
-*.java=:\
-*.jl=:\
-*.js=:\
-*.json=:\
-*.lua=:\
-*.md=:\
-*.php=:\
-*.pl=:\
-*.pro=:\
-*.py=:\
-*.rb=:\
-*.rs=:\
-*.scala=:\
-*.ts=:\
-*.vim=:\
-*.cmd=:\
-*.ps1=:\
-*.sh=:\
-*.bash=:\
-*.zsh=:\
-*.fish=:\
-*.tar=:\
-*.tgz=:\
-*.arc=:\
-*.arj=:\
-*.taz=:\
-*.lha=:\
-*.lz4=:\
-*.lzh=:\
-*.lzma=:\
-*.tlz=:\
-*.txz=:\
-*.tzo=:\
-*.t7z=:\
-*.zip=:\
-*.z=:\
-*.dz=:\
-*.gz=:\
-*.lrz=:\
-*.lz=:\
-*.lzo=:\
-*.xz=:\
-*.zst=:\
-*.tzst=:\
-*.bz2=:\
-*.bz=:\
-*.tbz=:\
-*.tbz2=:\
-*.tz=:\
-*.deb=:\
-*.rpm=:\
-*.jar=:\
-*.war=:\
-*.ear=:\
-*.sar=:\
-*.rar=:\
-*.alz=:\
-*.ace=:\
-*.zoo=:\
-*.cpio=:\
-*.7z=:\
-*.rz=:\
-*.cab=:\
-*.wim=:\
-*.swm=:\
-*.dwm=:\
-*.esd=:\
-*.jpg=:\
-*.jpeg=:\
-*.mjpg=:\
-*.mjpeg=:\
-*.gif=:\
-*.bmp=:\
-*.pbm=:\
-*.pgm=:\
-*.ppm=:\
-*.tga=:\
-*.xbm=:\
-*.xpm=:\
-*.tif=:\
-*.tiff=:\
-*.png=:\
-*.svg=:\
-*.svgz=:\
-*.mng=:\
-*.pcx=:\
-*.mov=:\
-*.mpg=:\
-*.mpeg=:\
-*.m2v=:\
-*.mkv=:\
-*.webm=:\
-*.ogm=:\
-*.mp4=:\
-*.m4v=:\
-*.mp4v=:\
-*.vob=:\
-*.qt=:\
-*.nuv=:\
-*.wmv=:\
-*.asf=:\
-*.rm=:\
-*.rmvb=:\
-*.flc=:\
-*.avi=:\
-*.fli=:\
-*.flv=:\
-*.gl=:\
-*.dl=:\
-*.xcf=:\
-*.xwd=:\
-*.yuv=:\
-*.cgm=:\
-*.emf=:\
-*.ogv=:\
-*.ogx=:\
-*.aac=:\
-*.au=:\
-*.flac=:\
-*.m4a=:\
-*.mid=:\
-*.midi=:\
-*.mka=:\
-*.mp3=:\
-*.mpc=:\
-*.ogg=:\
-*.ra=:\
-*.wav=:\
-*.oga=:\
-*.opus=:\
-*.spx=:\
-*.xspf=:\
-*.pdf=:\
-*.nix=:\
-"
-
-
-# Default Apps
-export EDITOR="micro"
-export READER="zathura"
-export VISUAL="micro"
-export TERMINAL="urxvt"
-export BROWSER="brave"
-export VIDEO="mpv"
-export IMAGE="sxiv"
-export COLORTERM="truecolor"
-export OPENER="xdg-open"
-export PAGER="less"
-export WM="bspwm"
-
-
-# Env variable
-export PATH=~/Applications:/home/anavarro/.cargo/bin:$PATH
-
-#Others
-export QT_QPA_PLATFORMTHEME="qt5ct"
-# For arduinor
-export BOARD_HARDWARE_PATH=~/Arduino/hardware
-export ARDUINO_PATH=/usr/local/arduino
-
-
 # Common alias
-alias l='lsd -lFh'     #size,show type,human readable
-alias ll='lsd -l'      #long list
-alias la='lsd -lAFh'   #long list,show almost all,show type,human readable
-alias lt='lsd -ltFh'   #long list,sorted by date,show type,human readable
-alias lrt='lsd -1Fcrt'
-alias lS='lsd -1FSsh'
+alias l='lsd -lFh'
+alias l='lsd -lFh'
+alias ll='lsd -lFh'
+alias la='lsd -lAFh'
+alias lt='lsd -ltFh'
+alias lrt='lsd -lrtFh'
+alias lS='lsd -lSFh'
 
 alias p='ps -f'
 alias h='history'
@@ -253,46 +66,27 @@ alias ..='cd ..'
 alias ...='cd ../../..'
 alias ....='cd ../../../..'
 alias cdf='cd $(fdfind . --type d ~ | sk)'
+alias md='mkdir -p'
 
-alias zshrc='${=EDITOR} ${ZDOTDIR:-$HOME}/.zshrc' # Quick access to the .zshrc file
-
-alias e='${EDITOR}'
-alias ef='${EDITOR} $(sk --preview "~/.config/lf/preview.sh {}")'
+alias mi='micro'
+alias mif='micro $(sk --preview "~/.config/lf/preview.sh {}")'
+alias e='micro'
+alias ef='micro $(sk --preview "~/.config/lf/preview.sh {}")'
 alias o='xdg-open'
 alias of='xdg-open $(sk --preview "~/.config/lf/preview.sh {}")'
-alias p='${PAGER}'
-alias pf='${PAGER} $(sk --preview "~/.config/lf/preview.sh {}")'
+alias p='less'
+alias pf='less $(sk --preview "~/.config/lf/preview.sh {}")'
 
-alias -s pdf=zathura
+# App by default by extention
+alias -s {txt,xml,md,java,make,gradle,js,ts}=micro
 alias -s {bmp,jpg,jpeg,png,xmp}=sxiv.sh
-
-
-	# *.tgz|*.tar.gz) tar tzf "$1";;
-	# *.tar.bz2|*.tbz2) tar tjf "$1";;
-	# *.tar.txz|*.txz) xz --list "$1";;
-	# *.tar) tar tf "$1";;
-	# *.zip|*.jar|*.war|*.ear|*.oxt) unzip -l "$1";;
-	# *.rar) unrar l "$1";;
-	# *.7z) 7z l "$1";;
-	# *.[1-8]) man "$1" | col -b ;;
-	# *.o) nm "$1" | less ;;
-	# *.iso) isoinfo --no-header -l "$1";;
-	# *.torrent) transmission-show "$1";;
-	# *.iso) iso-info --no-header -l "$1";;
-	# *.odt,*.ods,*.odp,*.sxw) odt2txt "$1";;
-	# *.doc) catdoc "$1" ;;
-	# *.docx) docx2txt "$1" - ;;
-	# *.csv) csvlook -e iso-8859-1 "$1";;
-# #	*.csv) cat "$1" | sed s/,/\\n/g ;;
-# #	*.bmp|*.jpg|*.jpeg|*.png|*.xpm) chafa --fill=block --symbols=block -c 256 -s 92x"${HEIGHT}" "${FILE}" "$1";;
-	# *.bmp|*.jpg|*.jpeg|*.png|*.xpm) jp2a "$1";;
-# #    *.bmp|*.jpg|*.jpeg|*.png|*.xpm) catimg "$1";;
-	# *.avi|*.mp4|*.wmv|*.dat|*.3gp|*.ogv|*.mkv|*.mpg|*.mpeg|*.vob|*.fl[icv]|*.m2v|*.mov|*.webm|*.ts|*.mts|*.m4v|*.r[am]|*.qt|*.divx) mediainfo "$1";;
-	# *.pdf) pdftotext "$1" - | less;;
-	# *.epub) mediainfo "$1";;
-	# *.wav|*.mp3|*.flac|*.m4a|*.wma|*.ape|*.ac3|*.og[agx]|*.spx|*.opus|*.as[fx]|*.flac) exiftool "$1";;
-	# 
-	# *) highlight --out-format ansi "$1" || batcat "$1";;
+alias -s {pdf,epub}=zathura
+alias -s {zip,tar,gz,tbz2,jar,war,ear,oxt,7z,rar,iso}=fileroller
+alias -s {avi,mp4,wmv,dat,3gp,ogv,mkv,mpg,mpeg,vob,.m2v,mov,webm,mts,m4v,rm,qt,divx}=mpv
+alias -s {wav,mp3,flac,m4a,wma,ape,ac3,ogg,spx,opus,asf}=mpv
+alias -s {zip,tar,gz,tbz2,jar,war,ear,oxt,7z,rar,iso}=engramma
+alias -s {odt,ods,odp,sxw,doc,docx}=libreoffice --writer
+alias -s {csv}=libreoffice --calc
 
 
 # Use lf to switch directories and bind it to ctrl-o
@@ -305,8 +99,9 @@ cdlf () {
         [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
     fi
 }
-bindkey -s '^o' 'cdlf\n'
-bindkey -s '^f' 'cdf\n'
+
+#bindkey -s '^o' 'cdlf\n'
+#bindkey -s '^f' 'cdf\n'
 
 # Bindkey For Rxvt
 bindkey '^[[1;2H^X'  backward-kill-line
@@ -323,8 +118,6 @@ bindkey '\eO6D^X' backward-kill-word
 bindkey '\eO6D\eO6D\eO6D\eO6D^X' backward-kill-word
 bindkey '\eO6C^X' kill-word
 bindkey '\eO6C\eO6C\eO6C\eO6C^X' kill-word
-
-
 
 # Theme Powerlevel10k
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
