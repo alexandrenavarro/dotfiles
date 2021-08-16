@@ -1,41 +1,49 @@
 set previewer ~/.config/lf/preview.sh
 set preview off
+#set ratios 1:2:3
 set drawbox true
-set color256
-#set icons true
+set icons true
 set ignorecase true
 
-map <enter> open
-map <bs2> updir
-map <f-2> rename
-map <c-q> quit
-map <c-w> quit
-map <delete> delete
-map <c-u> unselect
+# For zsh
+set shell zsh
+set shellopts '-euy'
+set ifs "\n"
+set filesep "\n"  # default already
+
+map <esc> cmd-escape
+map <delete> trash
+map <c-z> clear-unselect
 map <c-c> copy
 map <c-x> cut
 map <c-v> paste
-map <c-V> paste-async
-map <c-f> find
-map <bs> set hidden!
+map <c-f> search
+map <c-a> select-all
+map <c-h> set hidden!
 map <f-5> reload
+map <c-A> invert
+map <f-2> rename
+map <c-r> rename
+map 'h' set hidden!
+map <f-16> push :open-with<space>
+map <enter> open
+map <backspace2> updir
+map <c-q> quit
+map <c-w> quit
 
-# Asynchronus paste with rsync
-cmd paste-async &{{
-    load=$(lf -remote 'load')
-    mode=$(echo "$load" | sed -n '1p')
-    list=$(echo "$load" | sed '1d')
-    if [ $mode = 'copy' ]; then
-        rsync -av --ignore-existing --progress $list . \
-        | stdbuf -i0 -o0 -e0 tr '\r' '\n' \
-        | while read line; do
-            lf -remote "send $id echo $line"
-        done
-    elif [ $mode = 'move' ]; then
-        mv -n $list .
-    fi
-    lf -remote 'send load'
-    lf -remote 'send clear'
+map - $~/.config/lf/draw_img.sh "$f"
+
+
+cmd trash %trash-put $fx
+cmd select-all :unselect; invert
+cmd clear-unselect :clear; unselect
+cmd mkdir %mkdir "$@"
+cmd md %mkdir "$@"
+cmd open-with %"$@" $fx
+
+cmd cdf ${{
+	dir=$(fdfind . --type d ~ | sk)
+	lf -remote "send $id cd \"$dir\""
 }}
 
 
@@ -55,12 +63,6 @@ cmd tar %tar cvf "$f.tar" "$f"
 cmd targz %tar cvzf "$f.tar.gz" "$f"
 cmd tarbz2 %tar cjvf "$f.tar.bz2" "$f"
 
-cmd mkdir ${{
-  printf "Directory Name: "
-  read ans
-  mkdir $ans
-}}
-
 cmd mkfile ${{
   printf "File Name: "
   read ans
@@ -79,5 +81,16 @@ cmd chmod ${{
   lf -remote 'send reload'
 }}
 
+cmd query-mime-type %xdg-mime query filetype "$f"
 
+# cmd on-cd &{{
+    # # '&' commands run silently in background (which is what we want here),
+    # # but are not connected to stdout.
+    # # To make sure our escape sequence still reaches stdout we pipe it to /dev/tty
+    # printf "\033]0;lf\007" > /dev/tty
+# }}
 
+    # printf "\033]0;lf : $PWD\007" > /dev/tty
+
+# # also run at startup
+# on-cd
