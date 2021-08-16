@@ -17,12 +17,15 @@ case "$1" in
 	*.odt,*.ods,*.odp,*.sxw) odt2txt "$1";;
 	*.doc) catdoc "$1" ;;
 	*.docx) docx2txt "$1" - ;;
-	*.csv) cat "$1" | sed s/,/\\n/g ;;
+	*.csv) csvlook -e iso-8859-1 "$1";;
+#	*.csv) cat "$1" | sed s/,/\\n/g ;;
 #	*.bmp|*.jpg|*.jpeg|*.png|*.xpm) chafa --fill=block --symbols=block -c 256 -s 92x"${HEIGHT}" "${FILE}" "$1";;
-	*.bmp|*.jpg|*.jpeg|*.png|*.xpm) jp2a "$1";;
+	*.bmp|*.jpg|*.jpeg|*.png|*.xpm) jp2a --colors --color-depth=8 "$1";;
+#    *.bmp|*.jpg|*.jpeg|*.png|*.xpm) catimg "$1";;
 	*.avi|*.mp4|*.wmv|*.dat|*.3gp|*.ogv|*.mkv|*.mpg|*.mpeg|*.vob|*.fl[icv]|*.m2v|*.mov|*.webm|*.ts|*.mts|*.m4v|*.r[am]|*.qt|*.divx) mediainfo "$1";;
 	*.pdf) pdftotext "$1" - | less;;
 	*.epub) mediainfo "$1";;
 	*.wav|*.mp3|*.flac|*.m4a|*.wma|*.ape|*.ac3|*.og[agx]|*.spx|*.opus|*.as[fx]|*.flac) exiftool "$1";;
+	
 	*) highlight --out-format ansi "$1" || batcat "$1";;
 esac
