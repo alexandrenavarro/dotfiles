@@ -33,7 +33,6 @@ map <c-w> quit
 
 map - $~/.config/lf/draw_img.sh "$f"
 
-
 cmd trash %trash-put $fx
 cmd select-all :unselect; invert
 cmd clear-unselect :clear; unselect
@@ -67,6 +66,10 @@ cmd mkfile ${{
   printf "File Name: "
   read ans
   $EDITOR $ans
+}}
+
+cmd sxiv ${{
+	sxiv $(dirname $fx)
 }}
 
 cmd chmod ${{
