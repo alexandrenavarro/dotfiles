@@ -33,6 +33,7 @@ alias o='xdg-open'
 alias of='xdg-open $(sk --preview "~/.config/lf/preview.sh {}")'
 alias p='less'
 alias pf='less $(sk --preview "~/.config/lf/preview.sh {}")'
+alias clippaste='xsel -bo'
 
 # App by default by extention
 alias -s {txt,xml,md,java,make,gradle,js,ts}=micro
@@ -46,7 +47,7 @@ alias -s {odt,ods,odp,sxw,doc,docx}=libreoffice --writer
 alias -s {csv}=libreoffice --calc
 
 # Use lf to switch directories and bind it to ctrl-o
-cdlf () {
+function cdlf () {
     tmp="$(mktemp)"
     lf -last-dir-path="$tmp" "$@"
     if [ -f "$tmp" ]; then
@@ -56,23 +57,59 @@ cdlf () {
     fi
 }
 
-# Copies the pathname of the current directory to the system or X Windows clipboard
-function clipcopy() { 
-  xsel --clipboard --input < "${1:-/dev/stdin}"; 
+function clipcp() {
+  #xsel --clipboard --input < "${1:-/dev/stdin}";
+  xsel -bi < "${1:-/dev/stdin}";
 }
 
-function copydir {
-  print -n $PWD | clipcopy
+function cpdir {
+  print -n $PWD | clipcp
 }
 
-function copyfile {
+function cpfile {
   emulate -L zsh
-  clipcopy $1
+  clipcp $1
 }
+
+function cppath {
+  if [ -n "$1" ]; then
+  	realpath $1	| clipcp
+  else
+  	realpath . | clipcp
+  fi
+}
+
+# FIXME
+function cpbuffer () {
+  if which clipcp &>/dev/null; then
+    printf "%s" "$BUFFER" | clipcp
+  else
+    zle -M "clipop not found."
+  fi
+}
+
+zle -N cpbuffer
+
+bindkey "^O" cpbuffer
+
+
+#bindkey -s '^V' 'clippaste\n'
+
+# Bindkey for alacritty
+# As alactitty eat shift+home / shif+end without any event, just a hack with my programmable keyboard to simulate it with idem potent key tap after.
+bindkey '^X ^?'  backward-kill-line
+bindkey '^X  ^?^?' kill-line
+#bindkey '^X[H'  backward-kill-line
+
+bindkey '^[[1;5D'  backward-word
+bindkey '^[[1;5C'  forward-word
+bindkey '^[[1;6D^X'  backward-kill-word
+bindkey '^[[1;6D^[[1;6D^[[1;6D^[[1;6D^X'  backward-kill-word
+bindkey '^[[1;6C^X'  kill-word
 
 # Bindkey For Rxvt
-bindkey '^[[1;2H^X'  backward-kill-line
-bindkey '^[[1;2F^X'  kill-line
+# bindkey '^[[1;2H^X'  backward-kill-line
+# bindkey '^[[1;2F^X'  kill-line
 bindkey '^[[1;6D^X'  backward-kill-word
 bindkey '^[[1;6D^[[1;6D^[[1;6D^[[1;6D^X'  backward-kill-word
 bindkey '^[[1;6C^X'  kill-word
@@ -80,12 +117,12 @@ bindkey '^[[1;6C^[[1;6C^[[1;6C^[[1;6C^X'  kill-word
 
 
 # Bindkey For Intellij
-bindkey '\eO2H^X' backward-kill-line
-bindkey '\eO2F^X' kill-line
-bindkey '\eO6D^X' backward-kill-word
-bindkey '\eO6D\eO6D\eO6D\eO6D^X' backward-kill-word
-bindkey '\eO6C^X' kill-word
-bindkey '\eO6C\eO6C\eO6C\eO6C^X' kill-word
+# bindkey '\eO2H^X' backward-kill-line
+# bindkey '\eO2F^X' kill-line
+# bindkey '\eO6D^X' backward-kill-word
+# bindkey '\eO6D\eO6D\eO6D\eO6D^X' backward-kill-word
+# bindkey '\eO6C^X' kill-word
+# bindkey '\eO6C\eO6C\eO6C\eO6C^X' kill-word
 
 
 # Load prompt with p10k
@@ -140,6 +177,9 @@ source ~/.zsh/zsh-auto-notify/auto-notify.plugin.zsh
 
 # Load zsh-you-should-use
 source ~/.zsh/zsh-you-should-use/you-should-use.plugin.zsh
+
+# Load zsh-interactive-cd
+source ~/.zsh/zsh-interactive-cd/zsh-interactive-cd.plugin.zsh
 
 # Color mam pages
  export LESS_TERMCAP_mb=$'\e[1;32m'
