@@ -181,3 +181,5 @@ ex=:\
 *.pdf=:\
 *.nix=:\
 "
+
+. "$HOME/.cargo/env"
