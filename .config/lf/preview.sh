@@ -20,8 +20,11 @@ case "$1" in
 	*.csv) csvlook -e iso-8859-1 "$1";;
 #	*.csv) cat "$1" | sed s/,/\\n/g ;;
 #	*.bmp|*.jpg|*.jpeg|*.png|*.xpm) chafa --fill=block --symbols=block -c 256 -s 92x"${HEIGHT}" "${FILE}" "$1";;
-	*.bmp|*.jpg|*.jpeg|*.png|*.xpm) jp2a --colors --color-depth=8 "$1";;
-#    *.bmp|*.jpg|*.jpeg|*.png|*.xpm) catimg "$1";;
+	#*.bmp|*.jpg|*.jpeg|*.png|*.xpm) jp2a --colors --color-depth=8 "$1";;
+#	*.bmp|*.jpg|*.jpeg|*.png|*.xpm) /home/anavarro/idea-projects/java-terminal-sample/target/java-terminal-sample `echo "$(tput cols)/2-3"|bc` `echo "$(tput lines)-4"|bc` "$1";;
+#    *.bmp|*.jpg|*.jpeg|*.png|*.xpm) catimg  "$1";;
+#    *.bmp|*.jpg|*.jpeg|*.png|*.xpm) kitty +kitten icat "$1";;
+    *.bmp|*.jpg|*.jpeg|*.JPG|*.JPEG|*.png|*.xpm) width=`echo "$(tput cols)/2-3"|bc`;height=`echo "$(tput lines)-4"|bc`; chafa -s $(echo "${width}x${height}") "$1";;
 	*.avi|*.mp4|*.wmv|*.dat|*.3gp|*.ogv|*.mkv|*.mpg|*.mpeg|*.vob|*.fl[icv]|*.m2v|*.mov|*.webm|*.ts|*.mts|*.m4v|*.r[am]|*.qt|*.divx) mediainfo "$1";;
 	*.pdf) pdftotext "$1" - | less;;
 	*.epub) mediainfo "$1";;
