@@ -156,8 +156,7 @@ font:
     #style: Bold Italic
 
   # Point size
-  #size: 7
-  size: 10
+  size: 9
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
@@ -740,19 +739,37 @@ key_bindings:
   #- { key: Home,      mods: Shift,   mode: ~Alt,        action: ScrollToTop,   }
   #- { key: End,       mods: Shift,   mode: ~Alt,        action: ScrollToBottom }
 
-#  - { key: X,  mods: Control, mode: Vi|~Search, chars: "foo" }
   # Vi Mode
-  - { key: Space,  mods: Control, mode: ~Search, action: ClearSelection            }
-#  - { key: Home,  mods: Control|Shift, mode: Vi|~Search, chars: "foo" }
-  - { key: 102,  mods: Shift, mode: Vi|~Search, chars: "foo" }
-#  - { key: Space,   mods: Control|Shift, action: ClearSelection }
-  # - { key: Space,  mods: Control, mode: ~Search,    action: ToggleViMode            }
+  - { key: F12,                           mode: ~Vi,        action: ToggleViMode            }
+  - { key: Escape,                        mode: Vi|~Search, action: ToggleViMode            }
+  - { key: Home,                          mode: Vi,         action: First                   }
+  - { key: End,                           mode: Vi,         action: Last                    }
+  - { key: Left,     mods: Control,       mode: Vi,         action: WordLeft                }
+  - { key: Right,    mods: Control,       mode: Vi,         action: WordRight               }
+  - { key: Home,     mods: Control,       mode: Vi,         action: ScrollToTop             }
+  - { key: End,      mods: Control,       mode: Vi,         action: ScrollToBottom          }
+  - { key: PageDown,                      mode: Vi,         action: ScrollPageDown          }
+  - { key: PageUp,                        mode: Vi,         action: ScrollPageUp            }
+  - { key: Down,     mods: Control,       mode: Vi,         action: ScrollPageDown          }
+  - { key: Up,       mods: Control,       mode: Vi,         action: ScrollPageUp            }
+  - { key: Z,        mods: Control,       mode: Vi,         action: ClearSelection          }
+  - { key: C,        mods: Control,       mode: Vi,         action: Copy                    }  
+  - { key: F,        mods: Control,       mode: Vi,         action: SearchForward           }
+  - { key: F,        mods: Control|Shift, mode: Vi,         action: SearchBackward    }
+  - { key: N,                             mode: Vi|~Search, action: SearchNext              }
+  - { key: N,        mods: Shift,         mode: Vi|~Search, action: SearchPrevious          }
+  - { key: At,       mods: Control,       mode: Vi|~Search, action: ToggleNormalSelection   }
+  - { key: Return,                        mode: Vi|~Search, action: Open                    }
 
+#  - { key: Space,  mods: Shift|Control, mode: ~Search,    action: ToggleViMode            }
+#  - { key: Space,  mods: Control, mode: ~Search, action: ClearSelection            }
+#  - { key: Space,   mods: Control|Shift, action: ClearSelection }
+#  - { key: Space,  mods: Control, mode: ~Search,    action: ToggleViMode            }
   # - { key: Space,  mods: Shift|Control, mode: Vi|~Search, action: ScrollToBottom          }
   # - { key: Escape,                      mode: Vi|~Search, action: ClearSelection          }
   # - { key: I,                           mode: Vi|~Search, action: ToggleViMode            }
   # - { key: I,                           mode: Vi|~Search, action: ScrollToBottom          }
-  # - { key: C,      mods: Control,       mode: Vi|~Search, action: ToggleViMode            }
+  # - { key: C,      mods: Control,       mode: ~Vi|~Search,action: ToggleViMode            }
   # - { key: Y,      mods: Control,       mode: Vi|~Search, action: ScrollLineUp            }
   # - { key: E,      mods: Control,       mode: Vi|~Search, action: ScrollLineDown          }
   # - { key: G,                           mode: Vi|~Search, action: ScrollToTop             }
@@ -764,11 +781,10 @@ key_bindings:
   # - { key: Y,                           mode: Vi|~Search, action: Copy                    }
   # - { key: Y,                           mode: Vi|~Search, action: ClearSelection          }
   # - { key: Copy,                        mode: Vi|~Search, action: ClearSelection          }
-  # - { key: V,                           mode: Vi|~Search, action: ToggleNormalSelection   }
+  #- { key: V,                             mode: Vi|~Search, action: ToggleNormalSelection   }
   # - { key: V,      mods: Shift,         mode: Vi|~Search, action: ToggleLineSelection     }
   # - { key: V,      mods: Control,       mode: Vi|~Search, action: ToggleBlockSelection    }
   # - { key: V,      mods: Alt,           mode: Vi|~Search, action: ToggleSemanticSelection }
-  # - { key: Return,                      mode: Vi|~Search, action: Open                    }
   # - { key: K,                           mode: Vi|~Search, action: Up                      }
   # - { key: J,                           mode: Vi|~Search, action: Down                    }
   # - { key: H,                           mode: Vi|~Search, action: Left                    }
@@ -792,13 +808,11 @@ key_bindings:
   # - { key: Key5,   mods: Shift,         mode: Vi|~Search, action: Bracket                 }
   # - { key: Slash,                       mode: Vi|~Search, action: SearchForward           }
   # - { key: Slash,  mods: Shift,         mode: Vi|~Search, action: SearchBackward          }
-  # - { key: N,                           mode: Vi|~Search, action: SearchNext              }
-  # - { key: N,      mods: Shift,         mode: Vi|~Search, action: SearchPrevious          }
 
   # Search Mode
-  # - { key: Return,                mode: Search|Vi,  action: SearchConfirm         }
-  # - { key: Escape,                mode: Search,     action: SearchCancel          }
-  # - { key: C,      mods: Control, mode: Search,     action: SearchCancel          }
+  - { key: Return,                mode: Search|Vi,  action: SearchConfirm         }
+  - { key: Escape,                mode: Search,     action: SearchCancel          }
+  - { key: C,      mods: Control, mode: Search,     action: SearchCancel          }
   # - { key: U,      mods: Control, mode: Search,     action: SearchClear           }
   # - { key: W,      mods: Control, mode: Search,     action: SearchDeleteWord      }
   # - { key: P,      mods: Control, mode: Search,     action: SearchHistoryPrevious }
@@ -809,9 +823,8 @@ key_bindings:
   # - { key: Return, mods: Shift,   mode: Search|~Vi, action: SearchFocusPrevious   }
 
   # (Windows, Linux, and BSD only)
-  # - { key: V,              mods: Control|Shift, mode: ~Vi,        action: Paste            }
-  # - { key: C,              mods: Control|Shift,                   action: Copy             }
-  # - { key: F,              mods: Control|Shift, mode: ~Search,    action: SearchForward    }
+  - { key: C,              mods: Control|Shift,                   action: Copy             }  
+  - { key: V,              mods: Control|Shift, mode: ~Vi,        action: Paste            }
   # - { key: B,              mods: Control|Shift, mode: ~Search,    action: SearchBackward   }
   # - { key: C,              mods: Control|Shift, mode: Vi|~Search, action: ClearSelection   }
   # - { key: Insert,         mods: Shift,                           action: PasteSelection   }
