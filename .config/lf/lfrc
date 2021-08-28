@@ -2,7 +2,7 @@ set previewer ~/.config/lf/preview.sh
 set preview off
 #set ratios 1:2:3
 set drawbox true
-set icons true
+set icons on
 set ignorecase true
 
 # For zsh
@@ -18,16 +18,22 @@ map <c-c> copy
 map <c-x> cut
 map <c-v> paste
 map <c-f> search
+map <f-3> search-next
+#map <c-f> find
+#map <f-3> find-next
 map <c-a> select-all
-map <c-h> set hidden!
+map <c-h> rename
+map <backspace> rename
 map <f-5> reload
-map <c-A> invert
 map <f-2> rename
-map <c-r> rename
-map 'h' set hidden!
+map <f-12> read
+map <c-r> replace
+map h set hidden!
 map <f-16> push :open-with<space>
 map <enter> open
+
 map <backspace2> updir
+
 map <c-q> quit
 map <c-w> quit
 
@@ -97,3 +103,5 @@ cmd query-mime-type %xdg-mime query filetype "$f"
 
 # # also run at startup
 # on-cd
+
+map sr :set reverse!
