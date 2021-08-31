@@ -10,17 +10,21 @@ set shell zsh
 set shellopts '-euy'
 set ifs "\n"
 set filesep "\n"  # default already
+whatapps-chats
 
 map <esc> cmd-escape
 map <delete> trash
+map <c-n> push :md<space>
 map <c-z> clear-unselect
 map <c-c> copy
+map <c-t> $basename "$f" | tr -d '\n' | sed -e "s/^/\"/" -e "s/$/\"/" | xclip -selection clipboard
+map <c-l> $echo "$f" | tr -d '\n' | sed -e "s/^/\"/" -e "s/$/\"/" | xclip -selection clipboard
 map <c-x> cut
 map <c-v> paste
 map <c-f> search
 map <f-3> search-next
-#map <c-f> find
-#map <f-3> find-next
+#map <F-3> search-prev # does not work
+map <c-F> search-back
 map <c-a> select-all
 map <c-h> rename
 map <backspace> rename
@@ -29,11 +33,12 @@ map <f-2> rename
 map <f-12> read
 map <c-r> replace
 map h set hidden!
-map <f-16> push :open-with<space>
 map <enter> open
-
 map <backspace2> updir
-
+#cmap <c-left> cmd-word-back # does not work
+#cmap <c-right> cmd-word # does not work
+#cmap '<a-[>1;5D' cmd-word # does not work
+#cmap '<a-[>1;5C' cmd-word-back # does not work
 map <c-q> quit
 map <c-w> quit
 
@@ -91,6 +96,19 @@ cmd chmod ${{
 }}
 
 cmd query-mime-type %xdg-mime query filetype "$f"
+
+cmd cppath ${{
+#    "$fx" | xsel -bi < "${1:-/dev/stdin}"
+    "$f" | xclip
+}}
+
+
+cmd cpclip ${{
+  	xsel -bo
+  	
+}}
+
+
 
 # cmd on-cd &{{
     # # '&' commands run silently in background (which is what we want here),
