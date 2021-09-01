@@ -6,13 +6,13 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Common alias
-alias l='lsd -lFh'
-alias l='lsd -lFh'
-alias ll='lsd -lFh'
-alias la='lsd -lAFh'
-alias lt='lsd -ltFh'
-alias lrt='lsd -lrtFh'
-alias lS='lsd -lSFh'
+alias l='lsd -lFh --group-dirs first'
+alias l='lsd -lFh --group-dirs first'
+alias ll='lsd -lFh --group-dirs first'
+alias la='lsd -lAFh --group-dirs first'
+alias lt='lsd -ltFh --group-dirs first'
+alias lrt='lsd -lrtFh --group-dirs first'
+alias lS='lsd -lSFh --group-dirs first'
 
 alias p='ps -f'
 alias h='history'
@@ -26,13 +26,13 @@ alias cdf='cd $(fdfind . --type d ~ | sk)'
 alias md='mkdir -p'
 
 alias mi='micro'
-alias mif='micro $(sk --preview "~/.config/lf/preview.sh {}")'
+alias mif='micro $(fdfind . --type f | sk --preview "~/.config/lf/preview.sh {}")'
 alias e='micro'
-alias ef='micro $(sk --preview "~/.config/lf/preview.sh {}")'
+alias ef='micro $(fdfind . --type f | sk --preview "~/.config/lf/preview.sh {}")'
 alias o='xdg-open'
-alias of='xdg-open $(sk --preview "~/.config/lf/preview.sh {}")'
+alias of='xdg-open $(fdfind . --type f | sk --preview "~/.config/lf/preview.sh {}")'
 alias p='less'
-alias pf='less $(sk --preview "~/.config/lf/preview.sh {}")'
+alias pf='less $(fdfind . --type f | sk --preview "~/.config/lf/preview.sh {}")'
 alias clippaste='xsel -bo'
 
 # App by default by extention
@@ -99,7 +99,6 @@ bindkey "^O" cpbuffer
 # As alactitty eat shift+home / shif+end without any event, just a hack with my programmable keyboard to simulate it with idem potent key tap after.
 bindkey '^X ^?'  backward-kill-line
 bindkey '^X  ^?^?' kill-line
-#bindkey '^X[H'  backward-kill-line
 
 bindkey '^[[1;5D'  backward-word
 bindkey '^[[1;5C'  forward-word
@@ -123,14 +122,6 @@ bindkey '^[[1;6C^[[1;6C^[[1;6C^[[1;6C^X'  kill-word
 # bindkey '\eO6D\eO6D\eO6D\eO6D^X' backward-kill-word
 # bindkey '\eO6C^X' kill-word
 # bindkey '\eO6C\eO6C\eO6C\eO6C^X' kill-word
-
-
-# Load prompt with p10k
-# Not needed 
-# autoload -Uz promptinit && promptinit
-
-# A basic prompt :
-#PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
 
 # History in cache directory:
 export HISTSIZE=100000
@@ -160,10 +151,7 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 # Load zsh-syntax-highlighting
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# Load zsh-autocomplete
-#source ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-
-# Load zsh-autocomplete
+# Load zsh-history-substring-search
 source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.plugin.zsh
 
 bindkey '^[[1;5A' history-substring-search-up
@@ -182,102 +170,16 @@ source ~/.zsh/zsh-you-should-use/you-should-use.plugin.zsh
 source ~/.zsh/zsh-interactive-cd/zsh-interactive-cd.plugin.zsh
 
 # Color mam pages
- export LESS_TERMCAP_mb=$'\e[1;32m'
- export LESS_TERMCAP_md=$'\e[1;36m'
- export LESS_TERMCAP_me=$'\e[0m'
- export LESS_TERMCAP_se=$'\e[0m'
- export LESS_TERMCAP_so=$'\e[01;33m'
- export LESS_TERMCAP_ue=$'\e[0m'
- export LESS_TERMCAP_us=$'\e[1;4;36m'
-
-
-# web_search from terminal
-
-function web_search() {
-  emulate -L zsh
-
-  # define search engine URLS
-  typeset -A urls
-  urls=(
-    $ZSH_WEB_SEARCH_ENGINES
-    google      "https://www.google.com/search?q="
-    bing        "https://www.bing.com/search?q="
-    yahoo       "https://search.yahoo.com/search?p="
-    duckduckgo  "https://www.duckduckgo.com/?q="
-    startpage   "https://www.startpage.com/do/search?q="
-    yandex      "https://yandex.ru/yandsearch?text="
-    github      "https://github.com/search?q="
-    baidu       "https://www.baidu.com/s?wd="
-    ecosia      "https://www.ecosia.org/search?q="
-    goodreads   "https://www.goodreads.com/search?q="
-    qwant       "https://www.qwant.com/?q="
-    givero      "https://www.givero.com/search?q="
-    stackoverflow  "https://stackoverflow.com/search?q="
-    wolframalpha   "https://www.wolframalpha.com/input/?i="
-    archive     "https://web.archive.org/web/*/"
-    scholar        "https://scholar.google.com/scholar?q="
-  )
-
-  # check whether the search engine is supported
-  if [[ -z "$urls[$1]" ]]; then
-    echo "Search engine '$1' not supported."
-    return 1
-  fi
-
-  # search or go to main page depending on number of arguments passed
-  if [[ $# -gt 1 ]]; then
-    # build search url:
-    # join arguments passed with '+', then append to search engine URL
-    url="${urls[$1]}${(j:+:)@[2,-1]}"
-  else
-    # build main page url:
-    # split by '/', then rejoin protocol (1) and domain (2) parts with '//'
-    url="${(j://:)${(s:/:)urls[$1]}[1,2]}"
-  fi
-
-  xdg-open "$url"
-}
-
-
-alias bing='web_search bing'
-alias google='web_search google'
-alias yahoo='web_search yahoo'
-alias ddg='web_search duckduckgo'
-alias sp='web_search startpage'
-alias yandex='web_search yandex'
-alias github='web_search github'
-alias baidu='web_search baidu'
-alias ecosia='web_search ecosia'
-alias goodreads='web_search goodreads'
-alias qwant='web_search qwant'
-alias givero='web_search givero'
-alias stackoverflow='web_search stackoverflow'
-alias wolframalpha='web_search wolframalpha'
-alias archive='web_search archive'
-alias scholar='web_search scholar'
-
-#add your own !bang searches here
-alias wiki='web_search duckduckgo \!w'
-alias news='web_search duckduckgo \!n'
-alias youtube='web_search duckduckgo \!yt'
-alias map='web_search duckduckgo \!m'
-alias image='web_search duckduckgo \!i'
-alias ducky='web_search duckduckgo \!'
-
-# other search engine aliases
-if [[ ${#ZSH_WEB_SEARCH_ENGINES} -gt 0 ]]; then
-  typeset -A engines
-  engines=($ZSH_WEB_SEARCH_ENGINES)
-  for key in ${(k)engines}; do
-    alias "$key"="web_search $key"
-  done
-  unset engines key
-fi
-
+export LESS_TERMCAP_mb=$'\e[1;32m'
+export LESS_TERMCAP_md=$'\e[1;36m'
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_se=$'\e[0m'
+export LESS_TERMCAP_so=$'\e[01;33m'
+export LESS_TERMCAP_ue=$'\e[0m'
+export LESS_TERMCAP_us=$'\e[1;4;36m'
  
 # Prompt : Powerlevel10k
 source ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
-
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -285,5 +187,4 @@ source ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
 
