@@ -29,6 +29,6 @@ case "$1" in
 	*.pdf) pdftotext "$1" - | less;;
 	*.epub) mediainfo "$1";;
 	*.wav|*.mp3|*.flac|*.m4a|*.wma|*.ape|*.ac3|*.og[agx]|*.spx|*.opus|*.as[fx]|*.flac) exiftool "$1";;
-	
 	*) highlight --out-format ansi "$1" || batcat "$1";;
+	*) file "$1";;
 esac
