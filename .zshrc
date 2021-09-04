@@ -6,13 +6,13 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Common alias
-alias l='lsd -lFh'
-alias l='lsd -lFh'
-alias ll='lsd -lFh'
-alias la='lsd -lAFh'
-alias lt='lsd -ltFh'
-alias lrt='lsd -lrtFh'
-alias lS='lsd -lSFh'
+alias l='lsd -lFh --group-dirs first'
+alias l='lsd -lFh --group-dirs first'
+alias ll='lsd -lFh --group-dirs first'
+alias la='lsd -lAFh --group-dirs first'
+alias lt='lsd -ltFh --group-dirs first'
+alias lrt='lsd -lrtFh --group-dirs first'
+alias lS='lsd -lSFh --group-dirs first'
 
 alias p='ps -f'
 alias h='history'
