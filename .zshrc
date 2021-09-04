@@ -6,13 +6,13 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Common alias
-alias l='lsd -lFh --group-dirs first'
-alias l='lsd -lFh --group-dirs first'
-alias ll='lsd -lFh --group-dirs first'
-alias la='lsd -lAFh --group-dirs first'
-alias lt='lsd -ltFh --group-dirs first'
-alias lrt='lsd -lrtFh --group-dirs first'
-alias lS='lsd -lSFh --group-dirs first'
+alias l='lsd -lFh'
+alias l='lsd -lFh'
+alias ll='lsd -lFh'
+alias la='lsd -lAFh'
+alias lt='lsd -ltFh'
+alias lrt='lsd -lrtFh'
+alias lS='lsd -lSFh'
 
 alias p='ps -f'
 alias h='history'
@@ -26,13 +26,13 @@ alias cdf='cd $(fdfind . --type d ~ | sk)'
 alias md='mkdir -p'
 
 alias mi='micro'
-alias mif='micro $(fdfind . --type f | sk --preview "~/.config/lf/preview.sh {}")'
+alias mif='micro $(sk --preview "~/.config/lf/preview.sh {}")'
 alias e='micro'
-alias ef='micro $(fdfind . --type f | sk --preview "~/.config/lf/preview.sh {}")'
+alias ef='micro $(sk --preview "~/.config/lf/preview.sh {}")'
 alias o='xdg-open'
-alias of='xdg-open $(fdfind . --type f | sk --preview "~/.config/lf/preview.sh {}")'
+alias of='xdg-open $(sk --preview "~/.config/lf/preview.sh {}")'
 alias p='less'
-alias pf='less $(fdfind . --type f | sk --preview "~/.config/lf/preview.sh {}")'
+alias pf='less $(sk --preview "~/.config/lf/preview.sh {}")'
 alias clippaste='xsel -bo'
 
 # App by default by extention
@@ -60,10 +60,6 @@ function cdlf () {
 function clipcp() {
   #xsel --clipboard --input < "${1:-/dev/stdin}";
   xsel -bi < "${1:-/dev/stdin}";
-}
-
-function cpdir {
-  print -n $PWD | clipcp
 }
 
 function cpfile {
@@ -99,7 +95,6 @@ bindkey "^O" cpbuffer
 # As alactitty eat shift+home / shif+end without any event, just a hack with my programmable keyboard to simulate it with idem potent key tap after.
 bindkey '^X ^?'  backward-kill-line
 bindkey '^X  ^?^?' kill-line
-
 bindkey '^[[1;5D'  backward-word
 bindkey '^[[1;5C'  forward-word
 bindkey '^[[1;6D^X'  backward-kill-word
@@ -114,14 +109,21 @@ bindkey '^[[1;6D^[[1;6D^[[1;6D^[[1;6D^X'  backward-kill-word
 bindkey '^[[1;6C^X'  kill-word
 bindkey '^[[1;6C^[[1;6C^[[1;6C^[[1;6C^X'  kill-word
 
-
 # Bindkey For Intellij
-# bindkey '\eO2H^X' backward-kill-line
-# bindkey '\eO2F^X' kill-line
-# bindkey '\eO6D^X' backward-kill-word
-# bindkey '\eO6D\eO6D\eO6D\eO6D^X' backward-kill-word
-# bindkey '\eO6C^X' kill-word
-# bindkey '\eO6C\eO6C\eO6C\eO6C^X' kill-word
+bindkey '\eO2H^X' backward-kill-line
+bindkey '\eO2F^X' kill-line
+bindkey '\eO6D^X' backward-kill-word
+bindkey '\eO6D\eO6D\eO6D\eO6D^X' backward-kill-word
+bindkey '\eO6C^X' kill-word
+bindkey '\eO6C\eO6C\eO6C\eO6C^X' kill-word
+
+
+# Load prompt with p10k
+# Not needed 
+# autoload -Uz promptinit && promptinit
+
+# A basic prompt :
+#PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
 
 # History in cache directory:
 export HISTSIZE=100000
@@ -153,7 +155,6 @@ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Load zsh-history-substring-search
 source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.plugin.zsh
-
 bindkey '^[[1;5A' history-substring-search-up
 bindkey '^[[1;5B' history-substring-search-down
 
@@ -167,17 +168,21 @@ source ~/.zsh/zsh-auto-notify/auto-notify.plugin.zsh
 source ~/.zsh/zsh-you-should-use/you-should-use.plugin.zsh
 
 # Load zsh-interactive-cd
-source ~/.zsh/zsh-interactive-cd/zsh-interactive-cd.plugin.zsh
+#source ~/.zsh/zsh-interactive-cd/zsh-interactive-cd.plugin.zsh
+
+# Load zsh-autocomplete
+#source ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
 # Color mam pages
-export LESS_TERMCAP_mb=$'\e[1;32m'
-export LESS_TERMCAP_md=$'\e[1;36m'
-export LESS_TERMCAP_me=$'\e[0m'
-export LESS_TERMCAP_se=$'\e[0m'
-export LESS_TERMCAP_so=$'\e[01;33m'
-export LESS_TERMCAP_ue=$'\e[0m'
-export LESS_TERMCAP_us=$'\e[1;4;36m'
+ export LESS_TERMCAP_mb=$'\e[1;32m'
+ export LESS_TERMCAP_md=$'\e[1;36m'
+ export LESS_TERMCAP_me=$'\e[0m'
+ export LESS_TERMCAP_se=$'\e[0m'
+ export LESS_TERMCAP_so=$'\e[01;33m'
+ export LESS_TERMCAP_ue=$'\e[0m'
+ export LESS_TERMCAP_us=$'\e[1;4;36m'
  
+
 # Prompt : Powerlevel10k
 source ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
 
