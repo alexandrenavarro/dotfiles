@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Google Meet
+GenericName=Google Meet
+Exec=brave --new-window --app=https://meet.google.com/
+Terminal=false
+StartupWMClass=google meet
