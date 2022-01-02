@@ -1,8 +1,8 @@
 #!/bin/sh
-pgrep -x sxhkd > /dev/null || sxhkd &
+sxhkd &
 
 # Compositor for transparency (no need now, maybe for trayer)
-compton &
+picom &
 
 # Set the wallpaper
 feh --bg-fill ~/.config/wallpaper.png &
@@ -14,8 +14,8 @@ dunst &
 #trayer --edge top --align right --SetDockType true  --expand true --width 4 --transparent true --alpha 0 --tint 0x353535 --height 24 --margin 8 --distance 8 &
 
 # Set Screen saver afer 3 min and Lock after screensaver launched
-#xset s 360 &
-#light-locker --lock-after-screensaver 1 &
+xset s 600 &
+light-locker --lock-after-screensaver 1 &
 
 # For keep authentication on mounting network drive
 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
@@ -23,16 +23,13 @@ dunst &
 # Mount automatically usb disk
 udiskie &
 
-#Fix problem for java application
-wmname LG3D &
-
-export _JAVA_AWT_WM_NONREPARENTING=1 
-
 # Bsp Monitor
 bspc monitor -d 1 2 3 4 5 6 0
 
-bspc monitor HDMI-A-0 -d 1 2 3 4 5 6 0
-bspc monitor DisplayPort-0 -d 1 2 3 4 5 6 0
+bspc monitor DP-1 -d 1 2 3 4 5 6 0
+bspc monitor eDP-1 -d 1 2 3 4 5 6 0
+bspc monitor HDMI-1 -d 1 2 3 4 5 6 0
+
 
 # Bsp Desktop
 bspc desktop 2 --layout monocle
@@ -46,7 +43,7 @@ bspc config automatic_scheme     longest_side
 
 # Desktop 1 : Web Browser
 bspc rule -a Brave-browser desktop=1 follow=on
-bspc rule -a Firefox-esr desktop=1 follow=on
+bspc rule -a Firefox desktop=1 follow=on
 bspc rule -a Tor Browser desktop=1 follow=on
 
 # Desktop 2 : Work (generally full screen apps like IDE)
@@ -85,12 +82,10 @@ bspc rule -a Zathura state=tiled
 
 # Launch a terminal
 #urxvt &
-~/.cargo/bin/alacritty &
-
+alacritty &
 
 # Bar : Add a polybar just for system tray
 # TODO transparency works partally (better than trayer), the transparency on the polybar works but only darkgray transparency for the icon in the tray
-polybar systemtray &
+#polybar systemtray &
 #polybar righttopbar &
-
 
