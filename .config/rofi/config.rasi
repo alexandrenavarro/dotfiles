@@ -3,6 +3,7 @@
     background:                  black;
     normal-foreground:           @foreground;
     alternate-normal-background: rgba ( 16, 16, 16, 100 % ); // Dark Gray
+    alternate-active-background: @alternate-normal-background;
     selected-normal-background:  rgba ( 96, 96, 96, 100 % ); // Dark Gray//dimgray;
     selected-active-background:  @selected-normal-background;	
     active-foreground:           @foreground;	
@@ -17,7 +18,7 @@
     urgent-foreground:           rgba ( 204, 102, 102, 100 % );
     alternate-urgent-background: rgba ( 75, 81, 96, 90 % );
     lightbg:                     rgba ( 238, 232, 213, 100 % );
-    alternate-active-background: rgba ( 75, 81, 96, 89 % );
+    //alternate-active-background: rgba ( 75, 81, 96, 89 % );
     lightfg:                     rgba ( 88, 104, 117, 100 % );
     border-color:                rgba ( 124, 131, 137, 100 % );
     separatorcolor:              rgba ( 29, 31, 33, 100 % );
@@ -27,7 +28,6 @@
     background-color:            rgba ( 0, 0, 0, 0 % );
     alternate-active-foreground: @active-foreground;
 */
-
 }
 #window {
     background-color: @background;
