@@ -755,7 +755,8 @@ key_bindings:
   - { key: Z,        mods: Control,       mode: Vi,         action: ClearSelection          }
   - { key: C,        mods: Control,       mode: Vi,         action: Copy                    }  
   - { key: F,        mods: Control,       mode: Vi,         action: SearchForward           }
-  - { key: F,        mods: Control|Shift, mode: Vi,         action: SearchBackward    }
+  - { key: F3,       mods: Control,       mode: Vi,         action: SearchForward           }
+  - { key: F,        mods: Control|Shift, mode: Vi,         action: SearchBackward          }
   - { key: N,                             mode: Vi|~Search, action: SearchNext              }
   - { key: N,        mods: Shift,         mode: Vi|~Search, action: SearchPrevious          }
   - { key: At,       mods: Control,       mode: Vi|~Search, action: ToggleNormalSelection   }
