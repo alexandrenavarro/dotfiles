@@ -6,6 +6,8 @@
     "CtrlW": "Quit",
     "F3": "FindNext",
     "Ctrl-e":"CommandMode",
+    "CtrlBackspace": "DeleteWordLeft",
+    "CtrlH": "DeleteWordLeft",
     "\u001b[1;5D": "WordLeft",
     "\u001b[1;5C": "WordRight",
     "\u001b[1;5A": "ParagraphPrevious",
