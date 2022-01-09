@@ -18,7 +18,7 @@ xset s 600 &
 light-locker --lock-after-screensaver 1 &
 
 # For keep authentication on mounting network drive
-/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
 # Mount automatically usb disk
 udiskie &
