@@ -100,6 +100,8 @@ bindkey '^[[1;5C'  forward-word
 bindkey '^[[1;6D^X'  backward-kill-word
 bindkey '^[[1;6D^[[1;6D^[[1;6D^[[1;6D^X'  backward-kill-word
 bindkey '^[[1;6C^X'  kill-word
+bindkey  "^[[H"   beginning-of-line
+bindkey  "^[[F"   end-of-line
 
 # Bindkey For Rxvt
 # bindkey '^[[1;2H^X'  backward-kill-line
@@ -116,7 +118,6 @@ bindkey '\eO6D^X' backward-kill-word
 bindkey '\eO6D\eO6D\eO6D\eO6D^X' backward-kill-word
 bindkey '\eO6C^X' kill-word
 bindkey '\eO6C\eO6C\eO6C\eO6C^X' kill-word
-
 
 # Load prompt with p10k
 # Not needed 
