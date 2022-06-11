@@ -140,3 +140,16 @@
     margin:     0px 0.3em 0em 0em ;
     text-color: @normal-foreground;
 }
+configuration {
+  kb-cancel: "Alt+space,Escape";
+  kb-move-front: "Home";
+  kb-move-end: "End";
+  kb-row-first: "Ctrl+Home";
+  kb-row-last: "Ctrl+End";
+  kb-row-up: "Up,Ctrl+x";
+  kb-row-down: "Down,Ctrl+c";
+  kb-remove-word-back: "Shift+Ctrl+Left";
+  kb-remove-word-forward: "Shift+Ctrl+Right";
+  kb-remove-to-sol: "Shift+Home";
+  kb-remove-to-eol: "Shift+End";
+}
