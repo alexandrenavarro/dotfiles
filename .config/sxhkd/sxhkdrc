@@ -18,13 +18,10 @@
 super + Return
 	mate-terminal
 
-# Program Launcher 
-super + shift + z
+# Program Launcher / Switcher
+alt + space
 	rofi -combi-modi window,drun,run -show-icons -show combi -modi combi
 
-# Window Switcher
-alt + space
-	rofi -combi-modi window -show-icons -show combi -modi combi
 
 # Sxhkd reload its configuration files
 super + Escape
