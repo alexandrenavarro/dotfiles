@@ -35,6 +35,8 @@ alias p='less'
 alias pf='less $(sk --preview "~/.config/lf/preview.sh {}")'
 alias clippaste='xsel -bo'
 
+alias gw='./gradlew'
+
 # App by default by extention
 alias -s {txt,xml,md,java,make,gradle,js,ts}=micro
 alias -s {bmp,jpg,jpeg,png,xmp}=sxiv.sh
