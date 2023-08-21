@@ -1,4 +1,5 @@
 #!/bin/sh
+#pgrep -x sxhkd > /dev/null || sxhkd &
 sxhkd &
 
 # Compositor for transparency (no need now, maybe for trayer)
@@ -7,6 +8,7 @@ picom &
 # Set the wallpaper
 feh --bg-fill ~/.config/wallpaper.png &
 
+
 # Notifications : dunst or deadd (to test / configure it)
 dunst &
 
@@ -14,8 +16,8 @@ dunst &
 #trayer --edge top --align right --SetDockType true  --expand true --width 4 --transparent true --alpha 0 --tint 0x353535 --height 24 --margin 8 --distance 8 &
 
 # Set Screen saver afer 3 min and Lock after screensaver launched
-xset s 600 &
-light-locker --lock-after-screensaver 1 &
+#xset s 180 &
+#light-locker --lock-after-screensaver 1 &
 
 # For keep authentication on mounting network drive
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
@@ -24,12 +26,7 @@ light-locker --lock-after-screensaver 1 &
 udiskie &
 
 # Bsp Monitor
-bspc monitor -d 1 2 3 4 5 6 0
-
-bspc monitor DP-1 -d 1 2 3 4 5 6 0
-bspc monitor eDP-1 -d 1 2 3 4 5 6 0
-bspc monitor HDMI-1 -d 1 2 3 4 5 6 0
-
+bspc monitor -d 0 1 2 3 4 5 6
 
 # Bsp Desktop
 bspc desktop 2 --layout monocle
@@ -40,21 +37,30 @@ bspc config window_gap           4
 bspc config automatic_scheme     longest_side
 
 # Bspc Rule
+# Desktop 0 : Others
+bspc rule -a "Brave-browser:miro.com__app_dashboard" desktop=0 follow=on
 
 # Desktop 1 : Web Browser
 bspc rule -a Brave-browser desktop=1 follow=on
-bspc rule -a Firefox desktop=1 follow=on
+bspc rule -a Firefox-esr desktop=1 follow=on
 bspc rule -a Tor Browser desktop=1 follow=on
 
 # Desktop 2 : Work (generally full screen apps like IDE)
 bspc rule -a jetbrains-idea-ce desktop=2 follow=on
-bspc rule -a jetbrains-idea desktop=2 follow=on
-bspc rule -a Eclipse desktop=2 follow=on
-bspc rule -a jetbrains-studio desktop=2 follow=on
 bspc rule -a jetbrains-pycharm-ce desktop=2 follow=on
+
+bspc rule -a BambuStudio desktop=2 follow=on
+bspc rule -a OrcaSlicer desktop=2 follow=on
+bspc rule -a PrusaSlicer desktop=2 follow=on
+bspc rule -a Superslicer desktop=2 follow=on
+bspc rule -a UltiMaker-Cura desktop=2 follow=on
 bspc rule -a cura desktop=2 follow=on
-bspc rule -a digikam desktop=2 follow=on
+
+bspc rule -a steam desktop=2 follow=on
+
 bspc rule -a Simple-scan desktop=2 follow=on
+
+bspc rule -a digikam desktop=2 follow=on
 
 # Desktop 3 : File Manager
 bspc rule -a URxvt:lf desktop=3 follow=on
@@ -71,21 +77,20 @@ bspc rule -a Slack desktop=5 follow=on
 bspc rule -a "Brave-browser:meet.google.com" desktop=6 follow=on
 bspc rule -a "Brave-browser:calendar.google.com" desktop=6 follow=on
 
-# Desktop 0 : Others
-bspc rule -a "Brave-browser:miro.com__app_dashboard" desktop=0 follow=on
-
 # Others
 bspc rule -a Zathura state=tiled
 
 # Script for lf to set preview only on focus
 ~/.config/lf/lf-preview-only-on-focus.sh &
 
+# Go to desktop 1
+bspc desktop -f 1
+
 # Launch a terminal
-#urxvt &
 alacritty &
 
 # Bar : Add a polybar just for system tray
 # TODO transparency works partally (better than trayer), the transparency on the polybar works but only darkgray transparency for the icon in the tray
-#polybar systemtray &
+polybar systemtray &
 #polybar righttopbar &
 
