@@ -81,7 +81,7 @@ window:
   #startup_mode: Windowed
 
   # Window title
-  #title: Alacritty
+  title: Terminal
 
   # Allow terminal applications to change Alacritty's window title.
   dynamic_title: true
@@ -740,7 +740,7 @@ key_bindings:
   #- { key: End,       mods: Shift,   mode: ~Alt,        action: ScrollToBottom }
 
   # Vi Mode
-  - { key: F12,                           mode: ~Vi,        action: ToggleViMode            }
+  - { key: F12,      mods: Shift,         mode: ~Vi,        action: ToggleViMode            }
   - { key: Escape,                        mode: Vi|~Search, action: ToggleViMode            }
   - { key: Home,                          mode: Vi,         action: First                   }
   - { key: End,                           mode: Vi,         action: Last                    }
@@ -755,10 +755,9 @@ key_bindings:
   - { key: Z,        mods: Control,       mode: Vi,         action: ClearSelection          }
   - { key: C,        mods: Control,       mode: Vi,         action: Copy                    }  
   - { key: F,        mods: Control,       mode: Vi,         action: SearchForward           }
-  - { key: F3,       mods: Control,       mode: Vi,         action: SearchForward           }
   - { key: F,        mods: Control|Shift, mode: Vi,         action: SearchBackward          }
-  - { key: N,                             mode: Vi|~Search, action: SearchNext              }
-  - { key: N,        mods: Shift,         mode: Vi|~Search, action: SearchPrevious          }
+  - { key: F3,                            mode: Vi,         action: SearchNext              }
+  - { key: F3,       mods: Shift,         mode: Vi,         action: SearchPrevious          }
   - { key: At,       mods: Control,       mode: Vi|~Search, action: ToggleNormalSelection   }
   - { key: Return,                        mode: Vi|~Search, action: Open                    }
 
@@ -811,9 +810,9 @@ key_bindings:
   # - { key: Slash,  mods: Shift,         mode: Vi|~Search, action: SearchBackward          }
 
   # Search Mode
-  - { key: Return,                mode: Search|Vi,  action: SearchConfirm         }
-  - { key: Escape,                mode: Search,     action: SearchCancel          }
-  - { key: C,      mods: Control, mode: Search,     action: SearchCancel          }
+  - { key: Return,                        mode: Search|Vi,  action: SearchConfirm           }
+  - { key: Escape,                        mode: Search,     action: SearchCancel            }
+  - { key: C,        mods: Control,       mode: Search,     action: SearchCancel            }
   # - { key: U,      mods: Control, mode: Search,     action: SearchClear           }
   # - { key: W,      mods: Control, mode: Search,     action: SearchDeleteWord      }
   # - { key: P,      mods: Control, mode: Search,     action: SearchHistoryPrevious }
@@ -824,16 +823,16 @@ key_bindings:
   # - { key: Return, mods: Shift,   mode: Search|~Vi, action: SearchFocusPrevious   }
 
   # (Windows, Linux, and BSD only)
-  - { key: C,              mods: Control|Shift,                   action: Copy             }  
-  - { key: V,              mods: Control|Shift, mode: ~Vi,        action: Paste            }
+  - { key: C,        mods: Control|Shift,                   action: Copy                     }  
+  - { key: V,        mods: Control|Shift, mode: ~Vi,        action: Paste                    }
   # - { key: B,              mods: Control|Shift, mode: ~Search,    action: SearchBackward   }
   # - { key: C,              mods: Control|Shift, mode: Vi|~Search, action: ClearSelection   }
   # - { key: Insert,         mods: Shift,                           action: PasteSelection   }
   # - { key: Key0,           mods: Control,                         action: ResetFontSize    }
   # - { key: Equals,         mods: Control,                         action: IncreaseFontSize }
-  - { key: Plus,           mods: Control,                         action: IncreaseFontSize }
+  - { key: Plus,     mods: Control,                         action: IncreaseFontSize         }
   # - { key: NumpadAdd,      mods: Control,                         action: IncreaseFontSize }
-  - { key: Minus,          mods: Control,                         action: DecreaseFontSize }
+  - { key: Minus,    mods: Control,                         action: DecreaseFontSize         }
   # - { key: NumpadSubtract, mods: Control,                         action: DecreaseFontSize }
 
   # (Windows only)
