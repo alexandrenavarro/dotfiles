@@ -1,11 +1,3 @@
-
-##########################
-# WM independent hotkeys #
-##########################
-
-######################
-# Launching Programs #
-######################
 ##########################
 # WM independent hotkeys #
 ##########################
@@ -22,7 +14,6 @@ super + Return
 alt + space
 	rofi -combi-modi window,drun,run -show-icons -show combi -modi combi
 
-
 # Sxhkd reload its configuration files
 super + Escape
 	pkill -USR1 -x sxhkd
@@ -32,13 +23,13 @@ super + Escape
 # Windows Motions #
 ###################
 
-# Focus the node in the given direction
-super + {Left,Down,Up,Right}
-	bspc node -f {west,south,north,east}
-
 # Move the node in the given direction
-super + shift + {Left,Down,Up,Right}
+super + {Left,Down,Up,Right}
 	bspc node -s {west,south,north,east}
+
+# Focus the node in the given direction
+super + shift + {Left,Down,Up,Right}
+	bspc node -f {west,south,north,east}
 
 # Rotate tree
 super + End
@@ -84,6 +75,9 @@ super + alt + shift + {Left,Down,Up,Right}
 super + ctrl + {{Left,Down,Up,Right}
 	bspc node -p {west,south,north,east}	
 
+# Equalize windows
+super + @equal
+    bspc query -N -d | xargs -I % bspc node % -B
 
 #########################
 # Desktop manipulations #
@@ -94,95 +88,8 @@ super + control + {Left,Right}
 	bspc desktop -f {prev,next}.local
 
 # Focus or send to the given desktop
-super + shift {_,alt + }{1-5}
-	bspc {desktop -f,node -d} '^{1-5}'
-
-
-
-# Terminal
-super + Return
-	mate-terminal
-
-# Program Launcher 
-super + shift + z
-	rofi -combi-modi window,drun,run -show-icons -show combi -modi combi
-
-# Window Switcher
-alt + space
-	rofi -combi-modi window -show-icons -show combi -modi combi
-
-# Sxhkd reload its configuration files
-super + Escape
-	pkill -USR1 -x sxhkd
-
-
-###################
-# Windows Motions #
-###################
-
-# Focus the node in the given direction
-super + {Left,Down,Up,Right}
-	bspc node -f {west,south,north,east}
-
-# Move the node in the given direction
-super + shift + {Left,Down,Up,Right}
-	bspc node -s {west,south,north,east}
-
-# Rotate tree
-super + End
-    bspc node @/ -C forward
-super + shift + End
-    bspc node @/ -C backward
-
-
-# Transform to a floating window
-super + shift + Next
-	bspc node -t floating
-
-# Maximize a window
-super + alt + shift + Up
-	bspc node -t fullscreen
-
-# Tile a window
-super + alt + shift + Down
-	bspc node -t tiled
-
-# Monocle / Tiled mode
-super + shift + Prior
-	bspc desktop -l next
-
-# Close a window
-alt + {_,shift + }@F4
-	bspc node -{c,k}
-
-# Select Next / Previous window
-alt + {_,shift +} Tab
-	bspc node -f {next,prev}
-
-
-# Expand a window by moving one of its side outward
-super + alt + {Left,Down,Up,Right}
-	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
-
-# Contract a window by moving one of its side inward
-super + alt + shift + {Left,Down,Up,Right}
-	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
-
-# Preselect the direction
-super + ctrl + {{Left,Down,Up,Right}
-	bspc node -p {west,south,north,east}	
-
-
-#########################
-# Desktop manipulations #
-#########################
-
-# Focus the next/previous desktop in the current monitor
-super + control + {left,right}
-	bspc desktop -f {prev,next}.local
-
-# Focus or send to the given desktop
 super + shift {_,alt + }{0,1,2,3,4,5,6}
 	bspc {desktop -f,node -d} '{0,1,2,3,4,5,6}'
+	
 
 
