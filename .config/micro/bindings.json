@@ -3,7 +3,7 @@
     "CtrlDown": "ParagraphNext",
     "CtrlUp": "ParagraphPrevious",
     "CtrlUnderscore": "lua:comment.comment",
-    "Ctrl-w": "Quit",
+    "CtrlW": "Quit",
     "F3": "FindNext",
     "Shift-F3": "FindPrevious",
     "F12":"CommandMode",
